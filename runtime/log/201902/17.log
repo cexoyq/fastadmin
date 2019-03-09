@@ -1,0 +1,916 @@
+---------------------------------------------------------------
+[ 2019-02-17T09:33:40+08:00 ] 203.208.60.13 GET 300y.com.cn/index/user/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000255s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.000808s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'd8aa945b8448d8a41ab99c04b04f9e522294b47c' LIMIT 1 [ RunTime:0.000190s ]
+---------------------------------------------------------------
+[ 2019-02-17T09:54:57+08:00 ] 203.208.60.127 GET 300y.com.cn/api/ems/send.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000270s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_ems` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_ems` WHERE  `email` IS NULL  AND `event` = 'register' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000302s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.000864s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `email` IS NULL LIMIT 1 [ RunTime:0.000328s ]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'email' cannot be null
+---------------------------------------------------------------
+[ 2019-02-17T09:55:38+08:00 ] 203.208.60.107 GET 300y.com.cn/api/validate/check_ems_correct.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000281s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_ems` [ RunTime:0.000891s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_ems` WHERE  `email` IS NULL  AND `event` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000247s ]
+---------------------------------------------------------------
+[ 2019-02-17T09:55:52+08:00 ] 203.208.60.7 GET 300y.com.cn/api/validate/check_sms_correct.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000256s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_sms` [ RunTime:0.000792s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_sms` WHERE  `mobile` IS NULL  AND `event` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000224s ]
+---------------------------------------------------------------
+[ 2019-02-17T10:37:28+08:00 ] 203.208.60.79 GET 300y.com.cn/index/user/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000278s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.000807s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'd8aa945b8448d8a41ab99c04b04f9e522294b47c' LIMIT 1 [ RunTime:0.000202s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:42:09+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/index/login.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000252s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000842s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  `username` = 'root' LIMIT 1 [ RunTime:0.000377s ]
+[ sql ] [ SQL ] UPDATE `fa_admin`  SET `logintime`=1550385729,`token`='283b6b30-51d3-44dd-a6bc-a8dedeba1d49',`updatetime`=1550385729  WHERE  `id` = 1 [ RunTime:0.002375s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000687s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('登录' , '{\"__token__\":\"a37630526cb81915cbf3f3b71f098a1d\",\"username\":\"root\",\"captcha\":\"pwjg\"}' , '/admin/index/login.html' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550385729) [ RunTime:0.002005s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:42:09+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/index/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000265s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000607s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000282s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:42:09+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/dashboard?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000251s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000761s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000210s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000639s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000325s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'dashboard' LIMIT 1 [ RunTime:0.000212s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:09+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000315s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000789s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000197s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000634s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'example/bootstraptable' LIMIT 1 [ RunTime:0.000299s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:09+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/searchlist?search=a&field=row[user_id]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000276s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000870s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` LIMIT 10 [ RunTime:0.000301s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:09+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447905
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000268s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000771s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000197s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000865s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000292s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000727s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000314s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:09+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=group
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000286s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000819s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000197s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group` [ RunTime:0.000592s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `status` = 'normal' [ RunTime:0.000163s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_auth_group` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12) [ RunTime:0.000281s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:09+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=group
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000255s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000197s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group` [ RunTime:0.000625s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `status` = 'normal' [ RunTime:0.000161s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_auth_group` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12) [ RunTime:0.000184s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:11+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/63
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000264s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000871s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"63\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/63' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386451) [ RunTime:0.003110s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:11+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447906
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000282s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000852s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000224s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000649s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000329s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000666s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000313s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:12+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/64
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000275s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000822s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"64\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/64' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386452) [ RunTime:0.002713s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:12+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447907
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000259s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000763s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000207s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000631s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000631s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000241s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:14+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/65
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000285s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000879s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"65\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/65' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386454) [ RunTime:0.002742s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:14+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447908
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000262s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000906s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000244s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000293s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000654s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000270s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000296s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:14+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000304s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000821s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"66\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/66' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386454) [ RunTime:0.003395s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:14+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447909
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000266s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000778s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000209s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000856s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000695s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000290s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:17+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/63
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000263s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000836s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"63\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/63' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386457) [ RunTime:0.003359s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:17+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447910
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000258s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000764s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000198s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000622s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000629s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000348s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000247s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:18+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/64
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000261s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000809s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"64\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/64' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386458) [ RunTime:0.002635s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:18+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447911
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000250s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000773s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000213s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000613s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000772s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000262s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:20+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/65
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000316s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000927s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"65\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/65' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386460) [ RunTime:0.003340s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:20+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447912
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000435s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000878s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000654s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000668s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000301s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000255s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:21+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/66
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000293s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000815s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"66\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/66' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386461) [ RunTime:0.002662s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:21+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447913
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000270s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000860s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000216s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000636s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000702s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000282s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:22+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/67
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000306s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000828s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"67\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/67' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386462) [ RunTime:0.002932s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:22+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447914
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000281s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000886s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000232s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000348s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000664s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000252s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:23+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/68
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000285s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000824s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"68\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/68' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386463) [ RunTime:0.003783s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:23+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447915
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000287s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000751s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000640s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000301s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000318s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000252s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:23+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/change/ids/69
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000265s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000804s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"\",\"ids\":\"69\",\"params\":\"\"}' , '/admin/example/bootstraptable/change/ids/69' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386463) [ RunTime:0.002673s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:23+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447916
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000257s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000940s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000631s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000325s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000624s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000303s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000264s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:42+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/detail/ids/74
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000271s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000829s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  `id` = 74 LIMIT 1 [ RunTime:0.000323s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"ids\":\"74\"}' , '/admin/example/bootstraptable/detail/ids/74' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386482) [ RunTime:0.002840s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:49+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/customsearch?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000288s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000825s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000761s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000668s ]
+[ sql ] [ SQL ] SELECT `ip`,ip as aa FROM `fa_admin_log` WHERE  `createtime` >  1547189689 GROUP BY `ip` [ RunTime:0.000367s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'example/customsearch' LIMIT 1 [ RunTime:0.000264s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:49+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/customsearch/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386488048
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000286s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000851s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000221s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000661s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000324s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000682s ]
+[ sql ] [ SQL ] SELECT `ip`,ip as aa FROM `fa_admin_log` WHERE  `createtime` >  1547189689 GROUP BY `ip` [ RunTime:0.000149s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000267s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:49+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=group
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000283s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000827s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000218s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group` [ RunTime:0.000667s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `status` = 'normal' [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_auth_group` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12) [ RunTime:0.000153s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:54:50+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447917
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000337s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000863s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000665s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000636s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000265s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:03+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/bootstraptable/start/ids/75,74,73
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000266s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000900s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"action\":\"changestatus\",\"ids\":\"75,74,73\",\"params\":\"action=start\"}' , '/admin/example/bootstraptable/start/ids/75,74,73' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386503) [ RunTime:0.006385s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:03+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22admin_id%22%3A1%7D&op=%7B%22admin_id%22%3A%22%3D%22%7D&_=1550386447918
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000295s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000944s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000654s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000328s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:09+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/auth/admin/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000281s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000799s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000207s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000792s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000301s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000720s ]
+[ sql ] [ SQL ] SELECT `id` FROM `fa_admin` [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group` [ RunTime:0.000805s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `status` = 'normal' [ RunTime:0.000213s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12) [ RunTime:0.000193s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin` WHERE  (  `username` LIKE '%%' ) LIMIT 1 [ RunTime:0.000284s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  (  `username` LIKE '%%' ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000231s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000656s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('权限管理 管理员管理 查看' , '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"id\",\"desc\"]],\"searchTable\":\"tbl\",\"showField\":\"username\",\"keyField\":\"username\",\"searchField\":[\"username\"],\"username\":\"\"}' , '/admin/auth/admin/index' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386509) [ RunTime:0.003987s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:13+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/auth/adminlog/selectpage
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000341s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000828s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000213s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000733s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT `id` FROM `fa_admin` [ RunTime:0.000116s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group` [ RunTime:0.000593s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `status` = 'normal' [ RunTime:0.000158s ]
+[ sql ] [ SQL ] SELECT `id`,`name` FROM `fa_auth_group` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12) [ RunTime:0.000345s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000656s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `title` LIKE '%%' ) LIMIT 1 [ RunTime:0.000300s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `title` LIKE '%%' ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000240s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"id\",\"desc\"]],\"searchTable\":\"tbl\",\"showField\":\"title\",\"keyField\":\"title\",\"searchField\":[\"title\"],\"title\":\"\"}' , '/admin/auth/adminlog/selectpage' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386513) [ RunTime:0.003136s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:36+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/auth/admin/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000298s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000843s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000695s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000304s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000653s ]
+[ sql ] [ SQL ] SELECT `id` FROM `fa_admin` [ RunTime:0.000136s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group` [ RunTime:0.000601s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `status` = 'normal' [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12) [ RunTime:0.000179s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin` WHERE  (  `username` LIKE '%%' ) LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  (  `username` LIKE '%%' ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000152s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000696s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('权限管理 管理员管理 查看' , '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"id\",\"desc\"]],\"searchTable\":\"tbl\",\"showField\":\"username\",\"keyField\":\"username\",\"searchField\":[\"username\"],\"username\":\"\"}' , '/admin/auth/admin/index' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386536) [ RunTime:0.002548s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:40+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=admin&group_id=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000261s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000758s ]
+[ sql ] [ SQL ] SELECT `uid` FROM `fa_auth_group_access` WHERE  `group_id` IN (1) [ RunTime:0.000295s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000613s ]
+[ sql ] [ SQL ] SELECT id as value,username AS name FROM `fa_admin` WHERE  `id` IN (1) [ RunTime:0.000244s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:40+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=admin&group_id=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000251s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000741s ]
+[ sql ] [ SQL ] SELECT `uid` FROM `fa_auth_group_access` WHERE  `group_id` IN (1) [ RunTime:0.000162s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000679s ]
+[ sql ] [ SQL ] SELECT id as value,username AS name FROM `fa_admin` WHERE  `id` IN (1) [ RunTime:0.000167s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:44+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=admin&group_id=6
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000299s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000795s ]
+[ sql ] [ SQL ] SELECT `uid` FROM `fa_auth_group_access` WHERE  `group_id` IN (6) [ RunTime:0.000291s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000720s ]
+[ sql ] [ SQL ] SELECT id as value,username AS name FROM `fa_admin` WHERE  `id` IN ('') [ RunTime:0.000211s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:44+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=admin&group_id=6
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000288s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000801s ]
+[ sql ] [ SQL ] SELECT `uid` FROM `fa_auth_group_access` WHERE  `group_id` IN (6) [ RunTime:0.000170s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000628s ]
+[ sql ] [ SQL ] SELECT id as value,username AS name FROM `fa_admin` WHERE  `id` IN ('') [ RunTime:0.000168s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:49+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=admin&group_id=7
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000278s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000747s ]
+[ sql ] [ SQL ] SELECT `uid` FROM `fa_auth_group_access` WHERE  `group_id` IN (7) [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000607s ]
+[ sql ] [ SQL ] SELECT id as value,username AS name FROM `fa_admin` WHERE  `id` IN ('') [ RunTime:0.000162s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:49+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=admin&group_id=7
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000239s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000728s ]
+[ sql ] [ SQL ] SELECT `uid` FROM `fa_auth_group_access` WHERE  `group_id` IN (7) [ RunTime:0.000161s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SELECT id as value,username AS name FROM `fa_admin` WHERE  `id` IN ('') [ RunTime:0.000124s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:55:56+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/customsearch/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386488049
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000320s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000779s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000668s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000639s ]
+[ sql ] [ SQL ] SELECT `ip`,ip as aa FROM `fa_admin_log` WHERE  `createtime` >  1547189756 GROUP BY `ip` [ RunTime:0.000436s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000276s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:04+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=admin&group_id=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000306s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000878s ]
+[ sql ] [ SQL ] SELECT `uid` FROM `fa_auth_group_access` WHERE  `group_id` IN (1) [ RunTime:0.000177s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000772s ]
+[ sql ] [ SQL ] SELECT id as value,username AS name FROM `fa_admin` WHERE  `id` IN (1) [ RunTime:0.000176s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:06+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/auth/admin/index
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000306s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000881s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000212s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000729s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000302s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000721s ]
+[ sql ] [ SQL ] SELECT `id` FROM `fa_admin` [ RunTime:0.000150s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group` [ RunTime:0.000736s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `status` = 'normal' [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12) [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin` WHERE  (  `username` LIKE '%%' ) LIMIT 1 [ RunTime:0.000169s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin` WHERE  (  `username` LIKE '%%' ) ORDER BY `username` ASC LIMIT 0,10 [ RunTime:0.000301s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000761s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('权限管理 管理员管理 查看' , '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"username\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"username\",\"keyField\":\"username\",\"searchField\":[\"username\"],\"username\":\"\"}' , '/admin/auth/admin/index' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386566) [ RunTime:0.003355s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:13+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/colorbadge?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000279s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000861s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000222s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000718s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000317s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'example/colorbadge' LIMIT 1 [ RunTime:0.000322s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:13+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/colorbadge/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386571818
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000296s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000926s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000217s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000696s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000706s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000286s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:21+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/colorbadge/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386571819
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000296s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000926s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000700s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000730s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000137s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000171s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:26+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/colorbadge/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386571820
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000307s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000871s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000205s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000767s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000301s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000757s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000145s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000186s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:34+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/colorbadge/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386571821
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000311s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.001018s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000213s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000391s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000729s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000162s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000181s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:38+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/controllerjump?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000385s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.001690s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000344s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.001016s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000465s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'example/controllerjump' LIMIT 1 [ RunTime:0.000429s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:38+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/controllerjump/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386596995
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000266s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000741s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000666s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000309s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000633s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000135s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000151s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:45+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/controllerjump/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386596996
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000331s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.001031s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000836s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000168s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:46+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/controllerjump/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386596997
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000283s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000738s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000623s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000148s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000148s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:47+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/controllerjump/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386596998
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000279s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000209s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000663s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000696s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000137s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000153s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:48+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable?ip=111.175.85.47&addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000249s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000609s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000343s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'example/bootstraptable' LIMIT 1 [ RunTime:0.000191s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:48+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/searchlist?search=a&field=row[user_id]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000254s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000797s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` LIMIT 10 [ RunTime:0.000264s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:48+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22ip%22%3A%22111.175.85.47%22%2C%22admin_id%22%3A1%7D&op=%7B%22ip%22%3A%22%3D%22%2C%22admin_id%22%3A%22%3D%22%7D&_=1550386607195
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000255s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000743s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000188s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000599s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000625s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `ip` = '111.175.85.47'  AND `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000316s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `ip` = '111.175.85.47'  AND `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000285s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:48+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=group
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000254s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group` [ RunTime:0.000600s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `status` = 'normal' [ RunTime:0.000162s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_auth_group` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12) [ RunTime:0.000154s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:48+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/cxselect?type=group
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000256s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group` [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_auth_group` WHERE  `status` = 'normal' [ RunTime:0.000160s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_auth_group` WHERE  `id` IN (1,2,3,4,5,6,7,8,9,10,11,12) [ RunTime:0.000151s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:56:53+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/controllerjump/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386596999
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000292s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000227s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000658s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000325s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000665s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000135s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000167s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:02+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/bootstraptable/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%22ip%22%3A%22111.175.85.47%22%2C%22admin_id%22%3A1%7D&op=%7B%22ip%22%3A%22%3D%22%2C%22admin_id%22%3A%22%3D%22%7D&_=1550386607196
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000257s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000760s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000636s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000286s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000607s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` WHERE  (  `ip` = '111.175.85.47'  AND `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000157s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  (  `ip` = '111.175.85.47'  AND `admin_id` = 1 ) ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000172s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:04+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/cxselect?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000282s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000833s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000213s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000630s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'example/cxselect' LIMIT 1 [ RunTime:0.000334s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:05+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/area
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000255s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.000897s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_area` WHERE  `pid` = 0  AND `level` = 1 [ RunTime:0.000190s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:05+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/category?type=page&pid=5
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000289s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.000921s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_category` WHERE  `status` = 'normal'  AND `type` = 'page'  AND `pid` = 5 ORDER BY `weigh` DESC,`id` DESC [ RunTime:0.000381s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:05+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/area
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000290s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.000862s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_area` WHERE  `pid` = 0  AND `level` = 1 [ RunTime:0.000212s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:05+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/category?type=page&pid=5
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000210s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_category` WHERE  `status` = 'normal'  AND `type` = 'page'  AND `pid` = 5 ORDER BY `weigh` DESC,`id` DESC [ RunTime:0.000207s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:05+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/area?province=1964
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000284s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.000846s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_area` WHERE  `pid` = 1964  AND `level` = 2 [ RunTime:0.000197s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:05+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/category?pid=6
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000202s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.000822s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_category` WHERE  `status` = 'normal'  AND `pid` = 6 ORDER BY `weigh` DESC,`id` DESC [ RunTime:0.000459s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:05+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/area?province=1964&city=1988
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000274s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.000885s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_area` WHERE  `pid` = 1988  AND `level` = 3 [ RunTime:0.000193s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:07+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/area?province=37
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000287s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.001002s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_area` WHERE  `pid` = 37  AND `level` = 2 [ RunTime:0.000378s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:09+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/area?province=37&city=61
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000272s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.000801s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_area` WHERE  `pid` = 61  AND `level` = 3 [ RunTime:0.000355s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:17+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/category?pid=7
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000270s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.000867s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_category` WHERE  `status` = 'normal'  AND `pid` = 7 ORDER BY `weigh` DESC,`id` DESC [ RunTime:0.000369s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:19+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/category?pid=6
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000302s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_category` [ RunTime:0.001574s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_category` WHERE  `status` = 'normal'  AND `pid` = 6 ORDER BY `weigh` DESC,`id` DESC [ RunTime:0.000201s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:24+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/area?province=19
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000274s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.000845s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_area` WHERE  `pid` = 19  AND `level` = 2 [ RunTime:0.000342s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:27+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/ajax/area?province=19&city=20
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000264s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SELECT id as value,`name` FROM `fa_area` WHERE  `pid` = 20  AND `level` = 3 [ RunTime:0.000357s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:38+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/multitable?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000260s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000192s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000615s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000295s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:38+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/multitable/table1?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386656869
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000256s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000881s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000218s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000663s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_attachment` [ RunTime:0.000654s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_attachment` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000156s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_attachment` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000153s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:48+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/multitable/table2?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386656870
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000261s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000799s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000676s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000291s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000611s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000130s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000165s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:51+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/multitable/table1?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386656871
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000303s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000837s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000214s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000620s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_attachment` [ RunTime:0.000693s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_attachment` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000161s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_attachment` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000161s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:52+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/multitable/table2?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386656872
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000276s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000911s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000650s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000287s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000692s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000140s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000140s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:54+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/relationmodel?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000260s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000772s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000213s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'example/relationmodel' LIMIT 1 [ RunTime:0.000557s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:57:55+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/relationmodel/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386673377
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000255s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000757s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000712s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000635s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` `admin_log` INNER JOIN `fa_admin` `admin` ON `admin_log`.`admin_id`=`admin`.`id` ORDER BY `admin_log`.`id` DESC LIMIT 1 [ RunTime:0.000398s ]
+[ sql ] [ SQL ] SELECT `admin_log`.`id`,`admin_log`.`admin_id`,`admin_log`.`username`,`admin_log`.`url`,`admin_log`.`title`,`admin_log`.`content`,`admin_log`.`ip`,`admin_log`.`useragent`,`admin_log`.`createtime`,admin.id AS admin__id,admin.username AS admin__username,admin.nickname AS admin__nickname,admin.password AS admin__password,admin.salt AS admin__salt,admin.avatar AS admin__avatar,admin.email AS admin__email,admin.loginfailure AS admin__loginfailure,admin.logintime AS admin__logintime,admin.createtime AS admin__createtime,admin.updatetime AS admin__updatetime,admin.token AS admin__token,admin.status AS admin__status FROM `fa_admin_log` `admin_log` INNER JOIN `fa_admin` `admin` ON `admin_log`.`admin_id`=`admin`.`id` ORDER BY `admin_log`.`id` DESC LIMIT 0,10 [ RunTime:0.000837s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:05+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/relationmodel/index?sort=id&order=desc&offset=20&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386673378
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000264s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000753s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000199s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000662s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000296s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000688s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000633s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` `admin_log` INNER JOIN `fa_admin` `admin` ON `admin_log`.`admin_id`=`admin`.`id` ORDER BY `admin_log`.`id` DESC LIMIT 1 [ RunTime:0.000166s ]
+[ sql ] [ SQL ] SELECT `admin_log`.`id`,`admin_log`.`admin_id`,`admin_log`.`username`,`admin_log`.`url`,`admin_log`.`title`,`admin_log`.`content`,`admin_log`.`ip`,`admin_log`.`useragent`,`admin_log`.`createtime`,admin.id AS admin__id,admin.username AS admin__username,admin.nickname AS admin__nickname,admin.password AS admin__password,admin.salt AS admin__salt,admin.avatar AS admin__avatar,admin.email AS admin__email,admin.loginfailure AS admin__loginfailure,admin.logintime AS admin__logintime,admin.createtime AS admin__createtime,admin.updatetime AS admin__updatetime,admin.token AS admin__token,admin.status AS admin__status FROM `fa_admin_log` `admin_log` INNER JOIN `fa_admin` `admin` ON `admin_log`.`admin_id`=`admin`.`id` ORDER BY `admin_log`.`id` DESC LIMIT 20,10 [ RunTime:0.000895s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:06+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/relationmodel/index?sort=id&order=desc&offset=30&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386673379
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000350s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000979s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000803s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000417s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000843s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000777s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` `admin_log` INNER JOIN `fa_admin` `admin` ON `admin_log`.`admin_id`=`admin`.`id` ORDER BY `admin_log`.`id` DESC LIMIT 1 [ RunTime:0.000215s ]
+[ sql ] [ SQL ] SELECT `admin_log`.`id`,`admin_log`.`admin_id`,`admin_log`.`username`,`admin_log`.`url`,`admin_log`.`title`,`admin_log`.`content`,`admin_log`.`ip`,`admin_log`.`useragent`,`admin_log`.`createtime`,admin.id AS admin__id,admin.username AS admin__username,admin.nickname AS admin__nickname,admin.password AS admin__password,admin.salt AS admin__salt,admin.avatar AS admin__avatar,admin.email AS admin__email,admin.loginfailure AS admin__loginfailure,admin.logintime AS admin__logintime,admin.createtime AS admin__createtime,admin.updatetime AS admin__updatetime,admin.token AS admin__token,admin.status AS admin__status FROM `fa_admin_log` `admin_log` INNER JOIN `fa_admin` `admin` ON `admin_log`.`admin_id`=`admin`.`id` ORDER BY `admin_log`.`id` DESC LIMIT 30,10 [ RunTime:0.001221s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:20+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/tabletemplate?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000295s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000869s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000227s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000703s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000352s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'example/tabletemplate' LIMIT 1 [ RunTime:0.000292s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:20+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/tabletemplate/index?sort=id&order=desc&offset=0&limit=12&_=1550386699187
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000270s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000831s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000645s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000704s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000150s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,12 [ RunTime:0.000262s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:32+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/tabletemplate/index?sort=id&order=desc&_=1550386699188
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000280s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000773s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000670s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000286s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000617s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000140s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC [ RunTime:0.000392s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:32+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/tabletemplate/index?sort=id&order=desc&offset=0&limit=12&_=1550386699189
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000259s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000603s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000629s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000131s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,12 [ RunTime:0.000155s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:40+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/relationmodel/index?sort=id&order=desc&offset=30&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386673380
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000329s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000922s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000850s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin` [ RunTime:0.000804s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000731s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` `admin_log` INNER JOIN `fa_admin` `admin` ON `admin_log`.`admin_id`=`admin`.`id` ORDER BY `admin_log`.`id` DESC LIMIT 1 [ RunTime:0.000169s ]
+[ sql ] [ SQL ] SELECT `admin_log`.`id`,`admin_log`.`admin_id`,`admin_log`.`username`,`admin_log`.`url`,`admin_log`.`title`,`admin_log`.`content`,`admin_log`.`ip`,`admin_log`.`useragent`,`admin_log`.`createtime`,admin.id AS admin__id,admin.username AS admin__username,admin.nickname AS admin__nickname,admin.password AS admin__password,admin.salt AS admin__salt,admin.avatar AS admin__avatar,admin.email AS admin__email,admin.loginfailure AS admin__loginfailure,admin.logintime AS admin__logintime,admin.createtime AS admin__createtime,admin.updatetime AS admin__updatetime,admin.token AS admin__token,admin.status AS admin__status FROM `fa_admin_log` `admin_log` INNER JOIN `fa_admin` `admin` ON `admin_log`.`admin_id`=`admin`.`id` ORDER BY `admin_log`.`id` DESC LIMIT 30,10 [ RunTime:0.000221s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:48+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/baidumap?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000279s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000822s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000210s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000302s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'example/baidumap' LIMIT 1 [ RunTime:0.000324s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:48+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/baidumap/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386726974
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000292s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000202s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000691s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000300s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000759s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000225s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:58:54+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/baidumap/edit/ids/80?dialog=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000273s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.001581s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000688s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000288s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000721s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` WHERE  `id` = 80 LIMIT 1 [ RunTime:0.000307s ]
+[ error ] [0]模板文件不存在:/data/fastadmin/public/../application/admin/view/example/baidumap/edit.html
+---------------------------------------------------------------
+[ 2019-02-17T14:59:05+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/baidumap/map?dialog=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000262s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000291s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000698s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000318s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:59:07+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/baidumap/selectpage
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000299s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000654s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000365s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.000657s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_area` WHERE  (  `name` LIKE '%%' ) LIMIT 1 [ RunTime:0.001418s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_area` WHERE  (  `name` LIKE '%%' ) ORDER BY `name` ASC LIMIT 0,10 [ RunTime:0.002489s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000652s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"name\",\"searchField\":[\"name\"],\"name\":\"\"}' , '/admin/example/baidumap/selectpage' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386747) [ RunTime:0.003068s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:59:11+08:00 ] 111.175.85.47 POST wx.kjdll.com/admin/example/baidumap/selectpage
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000285s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000802s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000713s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_area` [ RunTime:0.000766s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_area` WHERE  (  `name` LIKE '%%' ) LIMIT 1 [ RunTime:0.000169s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_area` WHERE  (  `name` LIKE '%%' ) ORDER BY `name` ASC LIMIT 0,10 [ RunTime:0.000211s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] INSERT INTO `fa_admin_log` (`title` , `content` , `url` , `admin_id` , `username` , `useragent` , `ip` , `createtime`) VALUES ('' , '{\"q_word\":[\"\"],\"pageNumber\":\"1\",\"pageSize\":\"10\",\"andOr\":\"AND\",\"orderBy\":[[\"name\",\"ASC\"]],\"searchTable\":\"tbl\",\"showField\":\"name\",\"keyField\":\"name\",\"searchField\":[\"name\"],\"name\":\"\"}' , '/admin/example/baidumap/selectpage' , 1 , 'root' , 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.67 Safari/537.36' , '111.175.85.47' , 1550386751) [ RunTime:0.005335s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:59:20+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/example/colorbadge/index?sort=id&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1550386571822
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000266s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000796s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000630s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000483s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_admin_log` [ RunTime:0.000618s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000450s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_admin_log` ORDER BY `id` DESC LIMIT 0,10 [ RunTime:0.000274s ]
+---------------------------------------------------------------
+[ 2019-02-17T14:59:37+08:00 ] 111.175.85.47 GET wx.kjdll.com/admin/general/config?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000276s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000851s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000198s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000638s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000316s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_config` [ RunTime:0.000620s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_config` [ RunTime:0.000164s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'general/config' LIMIT 1 [ RunTime:0.000161s ]
+---------------------------------------------------------------
+[ 2019-02-17T16:34:56+08:00 ] 123.125.71.60 GET kjdll.com/index/user/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000261s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.000848s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'd8aa945b8448d8a41ab99c04b04f9e522294b47c' LIMIT 1 [ RunTime:0.000192s ]
+---------------------------------------------------------------
+[ 2019-02-17T16:34:56+08:00 ] 123.125.71.88 GET kjdll.com/index/user/
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000287s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.000900s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'd8aa945b8448d8a41ab99c04b04f9e522294b47c' LIMIT 1 [ RunTime:0.000178s ]
+---------------------------------------------------------------
+[ 2019-02-17T16:39:06+08:00 ] 47.92.138.160 GET kjdll.com/index/user/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000278s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.000860s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = 'd8aa945b8448d8a41ab99c04b04f9e522294b47c' LIMIT 1 [ RunTime:0.000209s ]
+---------------------------------------------------------------
+[ 2019-02-17T21:32:33+08:00 ] 203.208.60.50 GET 300y.com.cn/api/ems/send.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000266s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_ems` [ RunTime:0.000814s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_ems` WHERE  `email` IS NULL  AND `event` = 'register' ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.000748s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `email` IS NULL LIMIT 1 [ RunTime:0.000195s ]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'email' cannot be null
+---------------------------------------------------------------
+[ 2019-02-17T21:36:17+08:00 ] 203.208.60.93 GET 300y.com.cn/api/validate/check_ems_correct.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000272s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_ems` [ RunTime:0.000820s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_ems` WHERE  `email` IS NULL  AND `event` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000187s ]
+---------------------------------------------------------------
+[ 2019-02-17T21:36:55+08:00 ] 203.208.60.74 GET 300y.com.cn/api/validate/check_sms_correct.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000275s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_sms` [ RunTime:0.000841s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_sms` WHERE  `mobile` IS NULL  AND `event` IS NULL ORDER BY `id` DESC LIMIT 1 [ RunTime:0.000187s ]
