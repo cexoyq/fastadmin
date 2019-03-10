@@ -3891,3 +3891,53 @@
 [ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_fylog` [ RunTime:0.000646s ]
 [ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_gcrm_fylog` `fylog` LEFT JOIN `fa_gcrm_fytype` `fytype` ON `fylog`.`fytype_id`=`fytype`.`id` LEFT JOIN `fa_gcrm_xm` `xm` ON `fylog`.`xm_id`=`xm`.`id` ORDER BY `fylog`.`weigh` DESC LIMIT 1 [ RunTime:0.000201s ]
 [ sql ] [ SQL ] SELECT `fylog`.`id`,`fylog`.`xm_id`,`fylog`.`name`,`fylog`.`fytype_id`,`fylog`.`jine`,`fylog`.`riqi`,`fylog`.`weigh`,`fylog`.`status`,`fylog`.`createtime`,`fylog`.`updatetime`,`fylog`.`deletetime`,`fylog`.`remark`,fytype.id AS fytype__id,fytype.pid AS fytype__pid,fytype.name AS fytype__name,fytype.weigh AS fytype__weigh,fytype.status AS fytype__status,fytype.createtime AS fytype__createtime,fytype.updatetime AS fytype__updatetime,fytype.deletetime AS fytype__deletetime,fytype.remark AS fytype__remark,xm.id AS xm__id,xm.pid AS xm__pid,xm.xmcpx_id AS xm__xmcpx_id,xm.xmshiyebu_id AS xm__xmshiyebu_id,xm.xmgstype_id AS xm__xmgstype_id,xm.name AS xm__name,xm.zzjg_id AS xm__zzjg_id,xm.xmtype_id AS xm__xmtype_id,xm.htbh AS xm__htbh,xm.crmbh AS xm__crmbh,xm.htriqi AS xm__htriqi,xm.htJinE AS xm__htJinE,xm.xiaoShou_id AS xm__xiaoShou_id,xm.gongChengShi_id AS xm__gongChengShi_id,xm.xiangMuJingLi_id AS xm__xiangMuJingLi_id,xm.kehu_id AS xm__kehu_id,xm.kehuLianXiRen AS xm__kehuLianXiRen,xm.kehuLianXiRenTel AS xm__kehuLianXiRenTel,xm.xmnr AS xm__xmnr,xm.kgriqi AS xm__kgriqi,xm.wgriqi AS xm__wgriqi,xm.ysriqi AS xm__ysriqi,xm.tag AS xm__tag,xm.weigh AS xm__weigh,xm.createtime AS xm__createtime,xm.updatetime AS xm__updatetime,xm.deletetime AS xm__deletetime,xm.status AS xm__status,xm.remark AS xm__remark,xm.description AS xm__description FROM `fa_gcrm_fylog` `fylog` LEFT JOIN `fa_gcrm_fytype` `fytype` ON `fylog`.`fytype_id`=`fytype`.`id` LEFT JOIN `fa_gcrm_xm` `xm` ON `fylog`.`xm_id`=`xm`.`id` ORDER BY `fylog`.`weigh` DESC LIMIT 0,10 [ RunTime:0.000321s ]
+---------------------------------------------------------------
+[ 2019-03-09T23:59:01+08:00 ] 111.175.144.158 GET wx.kjdll.com/admin/gcrm/fygl?addtabs=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000340s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.001034s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000234s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000894s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_xm` [ RunTime:0.000745s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`name` FROM `fa_gcrm_xm` ORDER BY `weigh` DESC [ RunTime:0.000136s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_fytype` [ RunTime:0.000611s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`name` FROM `fa_gcrm_fytype` ORDER BY `weigh` DESC [ RunTime:0.000131s ]
+[ sql ] [ SQL ] SELECT `title`,`remark` FROM `fa_auth_rule` WHERE  `name` = 'gcrm/fygl' LIMIT 1 [ RunTime:0.000182s ]
+---------------------------------------------------------------
+[ 2019-03-09T23:59:02+08:00 ] 111.175.144.158 GET wx.kjdll.com/admin/gcrm/fygl/index?sort=weigh&order=desc&offset=0&limit=10&filter=%7B%7D&op=%7B%7D&_=1552147141859
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000269s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000808s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000357s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_xm` [ RunTime:0.000712s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`name` FROM `fa_gcrm_xm` ORDER BY `weigh` DESC [ RunTime:0.000132s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_fytype` [ RunTime:0.000595s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`name` FROM `fa_gcrm_fytype` ORDER BY `weigh` DESC [ RunTime:0.000122s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_fylog` [ RunTime:0.000634s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_gcrm_fylog` `fylog` LEFT JOIN `fa_gcrm_fytype` `fytype` ON `fylog`.`fytype_id`=`fytype`.`id` LEFT JOIN `fa_gcrm_xm` `xm` ON `fylog`.`xm_id`=`xm`.`id` ORDER BY `fylog`.`weigh` DESC LIMIT 1 [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SELECT `fylog`.`id`,`fylog`.`xm_id`,`fylog`.`name`,`fylog`.`fytype_id`,`fylog`.`jine`,`fylog`.`riqi`,`fylog`.`weigh`,`fylog`.`status`,`fylog`.`createtime`,`fylog`.`updatetime`,`fylog`.`deletetime`,`fylog`.`remark`,fytype.id AS fytype__id,fytype.pid AS fytype__pid,fytype.name AS fytype__name,fytype.weigh AS fytype__weigh,fytype.status AS fytype__status,fytype.createtime AS fytype__createtime,fytype.updatetime AS fytype__updatetime,fytype.deletetime AS fytype__deletetime,fytype.remark AS fytype__remark,xm.id AS xm__id,xm.pid AS xm__pid,xm.xmcpx_id AS xm__xmcpx_id,xm.xmshiyebu_id AS xm__xmshiyebu_id,xm.xmgstype_id AS xm__xmgstype_id,xm.name AS xm__name,xm.zzjg_id AS xm__zzjg_id,xm.xmtype_id AS xm__xmtype_id,xm.htbh AS xm__htbh,xm.crmbh AS xm__crmbh,xm.htriqi AS xm__htriqi,xm.htJinE AS xm__htJinE,xm.xiaoShou_id AS xm__xiaoShou_id,xm.gongChengShi_id AS xm__gongChengShi_id,xm.xiangMuJingLi_id AS xm__xiangMuJingLi_id,xm.kehu_id AS xm__kehu_id,xm.kehuLianXiRen AS xm__kehuLianXiRen,xm.kehuLianXiRenTel AS xm__kehuLianXiRenTel,xm.xmnr AS xm__xmnr,xm.kgriqi AS xm__kgriqi,xm.wgriqi AS xm__wgriqi,xm.ysriqi AS xm__ysriqi,xm.tag AS xm__tag,xm.weigh AS xm__weigh,xm.createtime AS xm__createtime,xm.updatetime AS xm__updatetime,xm.deletetime AS xm__deletetime,xm.status AS xm__status,xm.remark AS xm__remark,xm.description AS xm__description FROM `fa_gcrm_fylog` `fylog` LEFT JOIN `fa_gcrm_fytype` `fytype` ON `fylog`.`fytype_id`=`fytype`.`id` LEFT JOIN `fa_gcrm_xm` `xm` ON `fylog`.`xm_id`=`xm`.`id` ORDER BY `fylog`.`weigh` DESC LIMIT 0,10 [ RunTime:0.000322s ]
+---------------------------------------------------------------
+[ 2019-03-09T23:59:02+08:00 ] 111.175.144.158 GET wx.kjdll.com/admin/gcrm/fygl/add?dialog=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000267s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000900s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000790s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_xm` [ RunTime:0.000826s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`name` FROM `fa_gcrm_xm` ORDER BY `weigh` DESC [ RunTime:0.000133s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_fytype` [ RunTime:0.000591s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`name` FROM `fa_gcrm_fytype` ORDER BY `weigh` DESC [ RunTime:0.000123s ]
+---------------------------------------------------------------
+[ 2019-03-09T23:59:27+08:00 ] 111.175.144.158 GET wx.kjdll.com/admin/gcrm/fygl/edit/ids/2?dialog=1
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000259s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_group_access` [ RunTime:0.000842s ]
+[ sql ] [ SQL ] SELECT `aga`.`uid`,`aga`.`group_id`,`ag`.`id`,`ag`.`pid`,`ag`.`name`,`ag`.`rules` FROM `fa_auth_group_access` `aga` LEFT JOIN `fa_auth_group` `ag` ON `aga`.`group_id`=`ag`.`id` WHERE  (  aga.uid='1' and ag.status='normal' ) [ RunTime:0.000198s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000713s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`condition`,`icon`,`name`,`title`,`ismenu` FROM `fa_auth_rule` WHERE  `status` = 'normal' [ RunTime:0.000313s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_xm` [ RunTime:0.000778s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`name` FROM `fa_gcrm_xm` ORDER BY `weigh` DESC [ RunTime:0.000134s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_fytype` [ RunTime:0.000653s ]
+[ sql ] [ SQL ] SELECT `id`,`pid`,`name` FROM `fa_gcrm_fytype` ORDER BY `weigh` DESC [ RunTime:0.000128s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gcrm_fylog` [ RunTime:0.000674s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_gcrm_fylog` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000264s ]

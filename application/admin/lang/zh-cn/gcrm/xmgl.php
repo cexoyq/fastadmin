@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'Parent_id'  =>  '父ID',
+    'Xm_id'  =>  '项目ID',
+    'Pid' =>  '父项目ID',
     'Cpx_id'  =>  '产品线ID',
     'Shiyebu_id'  =>  '事业部ID',
     'Gstype_id'  =>  '公司类型',

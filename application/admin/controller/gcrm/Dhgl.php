@@ -3,7 +3,6 @@
 namespace app\admin\controller\gcrm;
 
 use app\common\controller\Backend;
-use fast\Tree;
 
 /**
  * 项目到货记录管理
@@ -26,16 +25,7 @@ class Dhgl extends Backend
 
         //Tree类的用法 ，输出多级选择
         $xmModel = new \app\admin\model\gcrm\Xm;
-        $xmList = $xmModel->field(['id','pid','name'])->order('weigh', 'desc')->select();
-        // 执行查询
-        //$xmList = collection($xmModel->field(['id','name'])->order('weigh', 'desc')->select())->toArray();
-        Tree::instance()->init($xmList);
-        $this->xmlist = Tree::instance()->getTreeList(Tree::instance()->getTreeArray(0), 'name');
-        $xmdata = [0 => __('None')];
-        foreach ($this->xmlist as $k => &$v)
-        {
-            $xmdata[$v['id']] = $v['name'];
-        }
+        $xmdata = $xmModel->getXmTreeList();
         $this->view->assign('xmdata', $xmdata);
 
         $this->view->assign("statusList", $this->model->getStatusList());

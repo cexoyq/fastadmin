@@ -23,20 +23,12 @@ class Fygl extends Backend
     {
         parent::_initialize();
 
-        //Tree类的用法 ，输出项目多级选择
+        //取得项目树形列表
         $xmModel = new \app\admin\model\gcrm\Xm;
-        $xmList = $xmModel->field(['id', 'pid', 'name'])->order('weigh', 'desc')->select();
-        // 执行查询
-        //$xmList = collection($xmModel->field(['id','name'])->order('weigh', 'desc')->select())->toArray();
-        Tree::instance()->init($xmList);
-        $this->xmlist = Tree::instance()->getTreeList(Tree::instance()->getTreeArray(0), 'name');
-        $xmdata = [0 => __('None')];
-        foreach ($this->xmlist as $k => &$v) {
-                $xmdata[$v['id']] = $v['name'];
-        }
-        $this->view->assign('xmdata', $xmdata);//输出项目树数组
+        $xmdata = $xmModel->getXmTreeList();
+        $this->view->assign('xmdata', $xmdata);
 
-        //Tree类的用法 ，输出费用类型多级选择
+        /*Tree类的用法 ，输出费用类型多级选择
         $fyTypeModel = new \app\admin\model\gcrm\Fytype;
         $fyTypeList = $fyTypeModel->field(['id', 'pid', 'name'])->order('weigh', 'desc')->select();
         // 执行查询
@@ -47,6 +39,9 @@ class Fygl extends Backend
         foreach ($this->fyTypelist as $k => &$v) {
                 $fyTypedata[$v['id']] = $v['name'];
         }
+        */
+        $fyTypeModel = new \app\admin\model\gcrm\Fytype;
+        $fyTypedata = $fyTypeModel->getFyTypeTreeList();
         $this->view->assign("fytypedata",$fyTypedata);  //输出费用类型树数组
 
         $this->model = new \app\admin\model\gcrm\Fylog;

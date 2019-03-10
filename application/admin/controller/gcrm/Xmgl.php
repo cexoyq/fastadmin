@@ -23,6 +23,37 @@ class Xmgl extends Backend
         parent::_initialize();
         $this->model = new \app\admin\model\gcrm\Xm;
         $this->view->assign("statusList", $this->model->getStatusList());
+        
+        $xmdata= $this->model->getXmTreeList();
+        $this->view->assign('xmdata', $xmdata);
+
+        $cpxModel = new \app\admin\model\gcrm\Xmcpx;
+        $cpxdata = $cpxModel->getCpxTreeList();
+        $this->view->assign('cpxdata', $cpxdata);
+
+        $sybModel = new \app\admin\model\gcrm\Xmshiyebu;
+        $sybdata=$sybModel->getShiyebuTreeList();
+        $this->view->assign('sybdata',$sybdata);
+
+        $gsTypeModel = new \app\admin\model\gcrm\Xmgstype;
+        $gstypedata=$gsTypeModel->getGsTypeTreeList();
+        $this->view->assign('gstypedata',$gstypedata);
+
+        $xmTypeModel = new \app\admin\model\gcrm\Xmtype;
+        $xmtypedata=$xmTypeModel->getXmtypeTreeList();
+        $this->view->assign('xmtypedata',$xmtypedata);
+
+        $zzjgModel = new \app\admin\model\gcrm\Zzjg;
+        $zzjgdata=$zzjgModel->getZzjgTreeList();
+        $this->view->assign('zzjgdata',$zzjgdata);
+
+        $kehuModel = new \app\admin\model\gcrm\Kehu;
+        $kehudata = $kehuModel->getKehuTreeList();
+        $this->view->assign('kehudata',$kehudata);
+
+        $adminModel = new \app\admin\model\gcrm\Admin;
+        $userdata = $adminModel->getAdminTreeList();
+        $this->view->assign('userdata',$userdata);
     }
     
     /**

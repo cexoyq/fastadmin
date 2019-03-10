@@ -5,24 +5,27 @@ namespace app\admin\controller\gcrm;
 use app\common\controller\Backend;
 
 /**
- * 发货记录管理
+ * 客户管理
  *
  * @icon fa fa-circle-o
  */
-class Fhgl extends Backend
+class Kehu extends Backend
 {
     
     /**
-     * Fhlog模型对象
-     * @var \app\admin\model\gcrm\Fhlog
+     * Kehu模型对象
+     * @var \app\admin\model\gcrm\Kehu
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\gcrm\Fhlog;
+        $this->model = new \app\admin\model\gcrm\Kehu;
         $this->view->assign("statusList", $this->model->getStatusList());
+
+        $kehudata = $this->model->getKehuTreeList();
+        $this->view->assign('kehudata',$kehudata);
     }
     
     /**
@@ -63,7 +66,7 @@ class Fhgl extends Backend
                     ->select();
 
             foreach ($list as $row) {
-                $row->visible(['id','xm','name','xh','sl','jsr','kddh','mdgs']);
+                $row->visible(['id','pid','name','weigh','status','remark']);
                 
             }
             $list = collection($list)->toArray();

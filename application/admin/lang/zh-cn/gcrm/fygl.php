@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'Xm_id'  =>  '项目ID',
     'Name'  =>  '费用名称',
     'Fytype_id'  =>  '费用类型',
     'Jine'  =>  '金额',
