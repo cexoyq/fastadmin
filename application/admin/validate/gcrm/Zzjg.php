@@ -4,7 +4,7 @@ namespace app\admin\validate\gcrm;
 
 use think\Validate;
 
-class Kehu extends Validate
+class Zzjg extends Validate
 {
     /**
      * 验证规则

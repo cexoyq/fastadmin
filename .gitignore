@@ -18,6 +18,9 @@ t 忽略。
 #data/runtime/
 .vscode
 runtime/
+cache
+log
+temp
 vendor
 thinkphp
 #simplewind/

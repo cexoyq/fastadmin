@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:67:"/data/fastadmin/public/../application/admin/view/gcrm/xmgl/add.html";i:1552221365;s:58:"/data/fastadmin/application/admin/view/layout/default.html";i:1547349021;s:55:"/data/fastadmin/application/admin/view/common/meta.html";i:1547349021;s:57:"/data/fastadmin/application/admin/view/common/script.html";i:1547349021;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:67:"/data/fastadmin/public/../application/admin/view/gcrm/xmgl/add.html";i:1552298886;s:58:"/data/fastadmin/application/admin/view/layout/default.html";i:1547349021;s:55:"/data/fastadmin/application/admin/view/common/meta.html";i:1547349021;s:57:"/data/fastadmin/application/admin/view/common/script.html";i:1547349021;}*/ ?>
 <!DOCTYPE html>
 <html lang="<?php echo $config['language']; ?>">
     <head>
@@ -62,21 +62,21 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2"><?php echo __('Cpx_id'); ?>:</label>
         <div class="col-xs-12 col-sm-8">
-            <?php echo build_select('row[cpx_id]', $cpxdata, null, ['class'=>'form-control selectpicker', 'data-rule'=>'required']); ?>
+            <?php echo build_select('row[xmcpx_id]', $cpxdata, null, ['class'=>'form-control selectpicker', 'data-rule'=>'required']); ?>
             <!--input id="c-cpx_id" data-rule="required" data-source="cpx/index" class="form-control selectpage" name="row[cpx_id]" type="text" value=""-->
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2"><?php echo __('Shiyebu_id'); ?>:</label>
         <div class="col-xs-12 col-sm-8">
-            <?php echo build_select('row[shiyebu_id]', $sybdata, null, ['class'=>'form-control selectpicker', 'data-rule'=>'required']); ?>
+            <?php echo build_select('row[xmshiyebu_id]', $sybdata, null, ['class'=>'form-control selectpicker', 'data-rule'=>'required']); ?>
             <!--input id="c-shiyebu_id" data-rule="required" data-source="shiyebu/index" class="form-control selectpage" name="row[shiyebu_id]" type="text" value=""-->
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2"><?php echo __('Gstype_id'); ?>:</label>
         <div class="col-xs-12 col-sm-8">
-            <?php echo build_select('row[gstype_id]', $gstypedata, null, ['class'=>'form-control selectpicker', 'data-rule'=>'required']); ?>
+            <?php echo build_select('row[xmgstype_id]', $gstypedata, null, ['class'=>'form-control selectpicker', 'data-rule'=>'required']); ?>
             <!--input id="c-gstype_id" data-rule="required" data-source="gstype/index" class="form-control selectpage" name="row[gstype_id]" type="text" value=""-->
         </div>
     </div>

@@ -5,12 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'gcrm/kehu/index',
-                    add_url: 'gcrm/kehu/add',
-                    edit_url: 'gcrm/kehu/edit',
-                    del_url: 'gcrm/kehu/del',
-                    multi_url: 'gcrm/kehu/multi',
-                    table: 'gcrm_kehu',
+                    index_url: 'gcrm/zzjggl/index',
+                    add_url: 'gcrm/zzjggl/add',
+                    edit_url: 'gcrm/zzjggl/edit',
+                    del_url: 'gcrm/zzjggl/del',
+                    multi_url: 'gcrm/zzjggl/multi',
+                    table: 'gcrm_zzjg',
                 }
             });
 
@@ -25,6 +25,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
+                        {field: 'pid', title: __('Pid')},
                         {field: 'name', title: __('Name')},
                         {field: 'weigh', title: __('Weigh'), operate:'BETWEEN'},
                         //{field: 'status', title: __('Status'), searchList: {"1":__('Status 1'),"0":__('Status 0')}, formatter: Table.api.formatter.status},

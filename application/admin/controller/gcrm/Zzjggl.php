@@ -5,24 +5,28 @@ namespace app\admin\controller\gcrm;
 use app\common\controller\Backend;
 
 /**
- * 发货记录管理
+ * 组织机构管理
  *
  * @icon fa fa-circle-o
  */
-class Fhgl extends Backend
+class Zzjggl extends Backend
 {
     
     /**
-     * Fhlog模型对象
-     * @var \app\admin\model\gcrm\Fhlog
+     * Zzjg模型对象
+     * @var \app\admin\model\gcrm\Zzjg
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\gcrm\Fhlog;
+        $this->model = new \app\admin\model\gcrm\Zzjg;
         $this->view->assign("statusList", $this->model->getStatusList());
+
+        $zzjgModel = new \app\admin\model\gcrm\Zzjg;
+        $zzjgdata=$zzjgModel->getZzjgTreeList();
+        $this->view->assign('zzjgdata',$zzjgdata);
     }
     
     /**
@@ -63,7 +67,7 @@ class Fhgl extends Backend
                     ->select();
 
             foreach ($list as $row) {
-                $row->visible(['id','xm','name','xh','sl','jsr','kddh','mdgs']);
+                $row->visible(['id','pid','name','weigh','status','remark']);
                 
             }
             $list = collection($list)->toArray();
