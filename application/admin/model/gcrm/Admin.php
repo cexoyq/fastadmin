@@ -16,15 +16,21 @@ class Admin extends Model
      */
     public function getAdminTreeList()
     {
+        $authXm = new AuthXm();
+        $zzjg = $authXm->getZzjg();   //取得当前用户所属的组织机构
+
         //Tree类的用法 ，输出费用类型多级选择
-        $List = $this->field(['id','nickname'])->order('id', 'desc')->select();
+        //$List = $this->field(['id','nickname'])->order('id', 'desc')->select();
+        $List =  $authXm->getAdminList();
         // 执行查询
         //$xmList = collection($xmModel->field(['id','name'])->order('weigh', 'desc')->select())->toArray();
+        //Tree::instance()->init($List);
+        //$list = Tree::instance()->getTreeList(Tree::instance()->getTreeArray(0), 'nickname');    //getTreeArray只有取父级的ID号才能将本级组织机构填充到树形数组
         $arrdata = [0 => __('None')];
-        foreach ($List as $k => $v)
-        {
+        foreach ($List as $k => &$v) {
             $arrdata[$v['id']] = $v['nickname'];
         }
+        //var_dump($arrdata);
         return $arrdata;
     }
 }

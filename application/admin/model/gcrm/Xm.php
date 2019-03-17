@@ -38,10 +38,12 @@ class Xm extends Model
      */
     public function getXmTreeList()
     {
-        //Tree类的用法 ，输出多级选择
-        $xmList = $this->field(['id', 'pid', 'name'])->order('weigh', 'desc')->select();
-        // 执行查询
-        //$xmList = collection($xmModel->field(['id','name'])->order('weigh', 'desc')->select())->toArray();
+        $authXm = new AuthXm();
+        $xmList = $authXm->getXmList();
+        //$zzjgIds = $authXm->getAllZzjgs();  //取得当前用户的组织机构及子组织机构的ID号，以逗号分隔
+        //Tree类的用法 ，输出多级选择，只能选择自己的组织机构及子组织机构以下的项目
+        //$xmList = $this->field(['id', 'pid', 'name'])->whereIn('zzjg_id',$zzjgIds)->order('weigh', 'desc')->select();
+
         Tree::instance()->init($xmList);
         $xmlist = Tree::instance()->getTreeList(Tree::instance()->getTreeArray(0), 'name');
         $xmdata = [0 => __('None')];

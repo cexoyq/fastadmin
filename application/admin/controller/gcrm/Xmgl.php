@@ -3,6 +3,8 @@
 namespace app\admin\controller\gcrm;
 
 use app\common\controller\Backend;
+use think\Db;
+use app\admin\model\gcrm\AuthXm;
 
 /**
  * 
@@ -79,20 +81,24 @@ class Xmgl extends Backend
             {
                 return $this->selectpage();
             }
+            
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            /*
+            $authXm = new AuthXm();
+            $zzjgs = $authXm->getAllZzjgs();
             $total = $this->model
                     ->with(['kehu','xmcpx','xmgstype','xmshiyebu','xmtype','zzjg'])
-                    ->where($where)
+                    ->where($where)//->where('zzjg_id','in',[1,22])   //只取当前用户所属的组织机构，及子组织机构的项目
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
                     ->with(['kehu','xmcpx','xmgstype','xmshiyebu','xmtype','zzjg'])
-                    ->where($where)
+                    ->where($where)//->where('zzjg_id','in',[1,22])   //只取当前用户所属的组织机构，及子组织机构的项目
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
-
+            
             foreach ($list as $row) {
                 $row->visible(['id','pid','name','htbh','htriqi','htJinE','kehuLianXiRen']);
                 $row->visible(['kehu']);
@@ -110,6 +116,16 @@ class Xmgl extends Backend
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);
+*/
+            //手动更改，以视图的方式查询用户所属的组织机构及子组织机构的所属项目
+            $uid=$this->auth->id;
+            $result = Db::query("select count(id) as xmCount from getAllXm where find_in_set(zzjg_id,getChildZzjg('{$uid}'))");
+            $total = $result[0]['xmCount'];
+            $list = Db::query("select * from getAllXm where find_in_set(zzjg_id,getChildZzjg('{$uid}')) limit {$offset}, {$limit}");
+            $list = collection($list)->toArray();
+            $result = array("total" => $total, "rows" => $list);
+            //var_dump($result);
+            
 
             return json($result);
         }

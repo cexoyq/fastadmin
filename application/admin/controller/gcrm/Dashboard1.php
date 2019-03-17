@@ -4,6 +4,8 @@ namespace app\admin\controller\gcrm;
 
 use app\common\controller\Backend;
 use think\Config;
+use app\admin\model\gcrm\AuthXm;
+use think\Db;
 
 /**
  * 控制台
@@ -49,6 +51,33 @@ class Dashboard1 extends Backend
             'addonversion'       => $addonVersion,
             'uploadmode'       => $uploadmode
         ]);
+
+        $t1 = $this->auth->isLogin();
+        if ($t1) {
+            echo "            用户已登陆！";
+        }
+
+        echo("用户ID：{$this->auth->id}");  //Backend类包含用户id
+
+        //$axm = new \app\admin\model\gcrm\AuthXm;  //这样用不需要在开头 use app\admin\model\gcrm\AuthXm;
+        $axm = new AuthXm;                          //这样用需要在开头 use app\admin\model\gcrm\AuthXm;
+        echo "getZzjg()";
+        var_dump($axm->getZzjg());
+        echo "<br>";echo "getAllZzjgs()";
+        var_dump($axm->getAllZzjgs());
+        echo "<br>";
+
+        $uid=$this->auth->id;
+        $list = Db::query("select * from getAllXm where find_in_set(zzjg_id,getChildZzjg('{$uid}'))");
+        //var_dump($list);
+
+        echo "getAdminsList()";
+        var_dump($axm->getAdminList());
+        echo "<br>";
+
+        echo "getkehuList()";
+        var_dump($axm->getKehuList());
+        echo "<br>";
 
         return $this->view->fetch();
     }

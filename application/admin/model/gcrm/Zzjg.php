@@ -65,17 +65,21 @@ class Zzjg extends Model
      */
     public function getZzjgTreeList()
     {
+        $authXm = new AuthXm();
+        $zzjg = $authXm->getZzjg();   //取得当前用户所属的组织机构
+        $zzjgIds = $authXm->getAllZzjgs();  //取得当前用户的组织机构及子组织机构的ID号，以逗号分隔
         //Tree类的用法 ，输出费用类型多级选择
-        $List = $this->field(['id', 'pid', 'name'])->order('weigh', 'desc')->select();
+        $List = $this->field(['id', 'pid', 'name'])->where('id','IN',$zzjgIds)->order('weigh', 'desc')->select();
+        //$List = $this->field(['id', 'pid', 'name'])->order('weigh', 'desc')->select();
         // 执行查询
         //$xmList = collection($xmModel->field(['id','name'])->order('weigh', 'desc')->select())->toArray();
         Tree::instance()->init($List);
-        $list = Tree::instance()->getTreeList(Tree::instance()->getTreeArray(0), 'name');
-
+        $list = Tree::instance()->getTreeList(Tree::instance()->getTreeArray($zzjg['pid']), 'name');    //getTreeArray只有取父级的ID号才能将本级组织机构填充到树形数组
         $arrdata = [0 => __('None')];
         foreach ($list as $k => &$v) {
             $arrdata[$v['id']] = $v['name'];
         }
+        //var_dump($arrdata);
         return $arrdata;
     }
 

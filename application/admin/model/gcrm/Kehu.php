@@ -64,8 +64,9 @@ class Kehu extends Model
      */
     public function getKehuTreeList()
     {
+        $authXm=new AuthXm();
         //Tree类的用法 ，输出费用类型多级选择
-        $List = $this->field(['id', 'pid', 'name'])->order('weigh', 'desc')->select();
+        $List = $authXm->getKehuList();
         // 执行查询
         //$xmList = collection($xmModel->field(['id','name'])->order('weigh', 'desc')->select())->toArray();
         Tree::instance()->init($List);

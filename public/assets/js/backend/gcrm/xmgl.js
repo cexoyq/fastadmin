@@ -33,8 +33,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'kehuLianXiRen', title: __('客户联系人')},
                         {field: 'kehu.name', title: __('客户')},
                         {field: 'xmcpx.name', title: __('产品线')},
-                        {field: 'xmgstype.name', title: __('公司')},
-                        {field: 'xmshiyebu.name', title: __('事业部')},
+                        //{field: 'xmgstype.name', title: __('公司')},
+                        //{field: 'xmshiyebu.name', title: __('事业部')},
                         {field: 'xmtype.name', title: __('项目类型')},
                         {field: 'zzjg.name', title: __('平台')},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
