@@ -40,7 +40,8 @@ class AuthXm extends Model
         'gcrm_zzjg'        => 'gcrm_zzjg', // 组织机构数据表名
         'gcrm_zzjg_user'         => 'gcrm_zzjg_user', // 用户信息表
         'xm' => 'gcrm_xm',  //项目表
-        'kehu' => 'gcrm_kehu'    //客户表
+        'kehu' => 'gcrm_kehu',    //客户表
+        'gd' => 'gcrm_gd'   //工单表
     ];
 
     public $id = null;   //用户的id号
@@ -139,4 +140,20 @@ class AuthXm extends Model
             ->select();
         return $List;
     }
+
+    /***
+     * 根据当前用户id，得到用户组织机构，然后根据组织机构，取得组织机构及子组织机构下的所有，没有完成的工单列表
+     */
+    public function getGdList()
+    {
+        $zzjgIds = $this->getAllZzjgs();  //取得当前用户的组织机构及子组织机构的ID号，以逗号分隔
+        //Tree类的用法 ，输出多级选择，只能选择自己的组织机构及子组织机构以下的项目
+        $List = Db::name($this->config['gd'])
+            ->field(['id', 'pid', 'gddd'])
+            ->whereNotIn('clzt',1)      //只读取没有结束的工单，1表示已结束的工单，
+            ->whereIn('zzjg_id', $zzjgIds)
+            ->order('weigh', 'desc')
+            ->select();
+        return $List;
+    }    
 }

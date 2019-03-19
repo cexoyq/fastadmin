@@ -5,12 +5,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'gcrm/fhgl/index',
-                    add_url: 'gcrm/fhgl/add',
-                    edit_url: 'gcrm/fhgl/edit',
-                    del_url: 'gcrm/fhgl/del',
-                    multi_url: 'gcrm/fhgl/multi',
-                    table: 'gcrm_fhlog',
+                    index_url: 'gcrm/gdgl/index',
+                    add_url: 'gcrm/gdgl/add',
+                    edit_url: 'gcrm/gdgl/edit',
+                    del_url: 'gcrm/gdgl/del',
+                    multi_url: 'gcrm/gdgl/multi',
+                    table: 'gcrm_gd',
                 }
             });
 
@@ -24,18 +24,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id')},
                         {field: 'riqi', title: __('Riqi'), operate:'RANGE', addclass:'datetimerange'},
-                        {field: 'remark', title: __('Remark')},
-                        {field: 'gd_id', title: __('Gd_id')},
-                        {field: 'xm', title: __('Xm')},
-                        {field: 'name', title: __('Name')},
-                        {field: 'xh', title: __('Xh')},
-                        {field: 'sl', title: __('Sl')},
-                        {field: 'jydh', title: __('Jydh')},
-                        {field: 'kdgs', title: __('Kdgs')},
-                        {field: 'mdgs', title: __('Mdgs')},
-                        {field: 'zzjg.name', title: __('Zzjg.name')},
+                        {field: 'gddd', title: __('Gddd')},
+                        {field: 'gzxx', title: __('Gzxx')},
+                        {field: 'gdmx.gzxx', title: __('Gdmx.gzxx')},
+                        {field: 'gdmx.sbdd', title: __('Gdmx.sbdd')},
+                        {field: 'gdmx.sb', title: __('Gdmx.sb')},
+                        {field: 'gdmx.clzt', title: __('Gdmx.clzt')},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

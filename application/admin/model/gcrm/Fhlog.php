@@ -58,4 +58,8 @@ class Fhlog extends Model
     }
 
 
+    public function zzjg()
+    {
+        return $this->belongsTo('Zzjg', 'zzjg_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
 }

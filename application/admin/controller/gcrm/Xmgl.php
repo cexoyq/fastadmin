@@ -47,6 +47,8 @@ class Xmgl extends Backend
 
         $zzjgModel = new \app\admin\model\gcrm\Zzjg;
         $zzjgdata=$zzjgModel->getZzjgTreeList();
+        $zzjgId = $zzjgModel->getZzjgId();
+        $this->view->assign('zzjgid',$zzjgId);
         $this->view->assign('zzjgdata',$zzjgdata);
 
         $kehuModel = new \app\admin\model\gcrm\Kehu;
@@ -83,18 +85,19 @@ class Xmgl extends Backend
             }
             
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
-            /*
+/*
             $authXm = new AuthXm();
-            $zzjgs = $authXm->getAllZzjgs();
+            $zzjgids = $authXm->getAllZzjgs();
+            $where = array('zzjg_id'=>['in',$zzjgids]);//只取当前用户所属的组织机构，及子组织机构的项目
             $total = $this->model
                     ->with(['kehu','xmcpx','xmgstype','xmshiyebu','xmtype','zzjg'])
-                    ->where($where)//->where('zzjg_id','in',[1,22])   //只取当前用户所属的组织机构，及子组织机构的项目
+                    ->where($where)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
                     ->with(['kehu','xmcpx','xmgstype','xmshiyebu','xmtype','zzjg'])
-                    ->where($where)//->where('zzjg_id','in',[1,22])   //只取当前用户所属的组织机构，及子组织机构的项目
+                    ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
@@ -117,6 +120,7 @@ class Xmgl extends Backend
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);
 */
+
             //手动更改，以视图的方式查询用户所属的组织机构及子组织机构的所属项目
             $uid=$this->auth->id;
             $result = Db::query("select count(id) as xmCount from getAllXm where find_in_set(zzjg_id,getChildZzjg('{$uid}'))");
@@ -125,7 +129,7 @@ class Xmgl extends Backend
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);
             //var_dump($result);
-            
+
 
             return json($result);
         }

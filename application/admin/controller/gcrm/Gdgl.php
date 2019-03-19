@@ -3,37 +3,25 @@
 namespace app\admin\controller\gcrm;
 
 use app\common\controller\Backend;
-use app\admin\model\gcrm\AuthXm;
 
 /**
- * 发货记录管理
+ * 
  *
  * @icon fa fa-circle-o
  */
-class Fhgl extends Backend
+class Gdgl extends Backend
 {
     
     /**
-     * Fhlog模型对象
-     * @var \app\admin\model\gcrm\Fhlog
+     * Gd模型对象
+     * @var \app\admin\model\gcrm\Gd
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\gcrm\Fhlog;
-        $this->view->assign("statusList", $this->model->getStatusList());
-
-        $zzjgModel = new \app\admin\model\gcrm\Zzjg;
-        $zzjgdata=$zzjgModel->getZzjgTreeList();
-        $zzjgId = $zzjgModel->getZzjgId();
-        $this->view->assign('zzjgid',$zzjgId);
-        $this->view->assign('zzjgdata',$zzjgdata);
-
-        $gdModel = new \app\admin\model\gcrm\Gd;
-        $gddata=$gdModel->getGdTreeList();
-        $this->view->assign('gddata',$gddata);
+        $this->model = new \app\admin\model\gcrm\Gd;
 
     }
     
@@ -61,28 +49,23 @@ class Fhgl extends Backend
                 return $this->selectpage();
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
-
-            $authXm = new AuthXm();
-            $zzjgids = $authXm->getAllZzjgs();
-            $where = array('zzjg_id'=>['in',$zzjgids]);//只取当前用户所属的组织机构，及子组织机构的项目
-
             $total = $this->model
-                    ->with(['zzjg'])
+                    ->with(['gdmx'])
                     ->where($where)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
-                    ->with(['zzjg'])
+                    ->with(['gdmx'])
                     ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
 
             foreach ($list as $row) {
-                $row->visible(['id','riqi','gd_id','xm','name','xh','sl','jydh','kdgs','mdgs','remark']);
-                $row->visible(['zzjg']);
-				$row->getRelation('zzjg')->visible(['name']);
+                $row->visible(['riqi','gddd','gzxx']);
+                $row->visible(['gdmx']);
+				$row->getRelation('gdmx')->visible(['gzxx','sbdd','sb','clzt']);
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);

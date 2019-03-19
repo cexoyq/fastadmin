@@ -3,6 +3,7 @@
 namespace app\admin\controller\gcrm;
 
 use app\common\controller\Backend;
+use app\admin\model\gcrm\AuthXm;
 
 /**
  * 客户管理
@@ -26,6 +27,12 @@ class Kehu extends Backend
 
         $kehudata = $this->model->getKehuTreeList();
         $this->view->assign('kehudata',$kehudata);
+
+        $zzjgModel = new \app\admin\model\gcrm\Zzjg;
+        $zzjgdata=$zzjgModel->getZzjgTreeList();
+        $zzjgId = $zzjgModel->getZzjgId();
+        $this->view->assign('zzjgid',$zzjgId);
+        $this->view->assign('zzjgdata',$zzjgdata);
     }
     
     /**
@@ -52,14 +59,17 @@ class Kehu extends Backend
                 return $this->selectpage();
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+
+            $authXm = new AuthXm();
+            $zzjgids = $authXm->getAllZzjgs();
+            $where = array('zzjg_id'=>['in',$zzjgids]);//只取当前用户所属的组织机构，及子组织机构的项目
+
             $total = $this->model
-                    
                     ->where($where)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
-                    
                     ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)

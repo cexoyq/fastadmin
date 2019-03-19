@@ -4,6 +4,7 @@ namespace app\admin\controller\gcrm;
 
 use app\common\controller\Backend;
 use fast\Tree;
+use app\admin\model\gcrm\AuthXm;
 
 /**
  * 
@@ -70,6 +71,11 @@ class Fygl extends Backend
                         return $this->selectpage();
                     }
                 list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+
+                $authXm = new AuthXm();
+                $zzjgids = $authXm->getAllZzjgs();
+                $where = array('zzjg_id'=>['in',$zzjgids]);//只取当前用户所属的组织机构，及子组织机构的项目
+
                 $total = $this->model
                     ->with(['fytype', 'xm'])
                     ->where($where)
