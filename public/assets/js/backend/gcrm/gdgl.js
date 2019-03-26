@@ -24,13 +24,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
+                        {field: 'id', title: __('id')},
                         {field: 'riqi', title: __('Riqi'), operate:'RANGE', addclass:'datetimerange'},
                         {field: 'gddd', title: __('Gddd')},
                         {field: 'gzxx', title: __('Gzxx')},
-                        {field: 'gdmx.gzxx', title: __('Gdmx.gzxx')},
-                        {field: 'gdmx.sbdd', title: __('Gdmx.sbdd')},
-                        {field: 'gdmx.sb', title: __('Gdmx.sb')},
-                        {field: 'gdmx.clzt', title: __('Gdmx.clzt')},
+                        {field: 'clzt', title: __('Clzt')},
+                        //{field: 'gdmx.gzxx', title: __('Gdmx.gzxx')},
+                        //{field: 'gdmx.sbdd', title: __('Gdmx.sbdd')},
+                        //{field: 'gdmx.sb', title: __('Gdmx.sb')},
+                        //{field: 'gdmx.clzt', title: __('Gdmx.clzt')},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

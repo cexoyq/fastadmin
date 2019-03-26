@@ -4,6 +4,9 @@ namespace app\admin\controller\gcrm;
 
 use app\common\controller\Backend;
 
+use app\admin\model\gcrm\AuthXm;
+use fast\Tree;
+
 /**
  * 
  *
@@ -22,6 +25,14 @@ class Gdgl extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\gcrm\Gd;
+
+        $xmModel = new \app\admin\model\gcrm\Xm;
+        $xmdata= $xmModel->getXmTreeList();
+        $this->view->assign('xmdata', $xmdata);
+
+        $zzjgModel = new \app\admin\model\gcrm\Zzjg;
+        $zzjgId = $zzjgModel->getZzjgId();
+        $this->view->assign('zzjgid',$zzjgId);
 
     }
     
@@ -49,15 +60,25 @@ class Gdgl extends Backend
                 return $this->selectpage();
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+
+            $authXm = new AuthXm();
+            $zzjgids = $authXm->getAllZzjgs();
+
+            $where1=[];
+            $where1['gd.status'] =1;
+            $where1['gd.zzjg_id']=['in',$zzjgids];//只取当前用户所属的组织机构，及子组织机构的项目
+
             $total = $this->model
                     ->with(['gdmx'])
                     ->where($where)
+                    ->where($where1)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
                     ->with(['gdmx'])
                     ->where($where)
+                    ->where($where1)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
@@ -74,4 +95,157 @@ class Gdgl extends Backend
         }
         return $this->view->fetch();
     }
+    
+    /**
+     * 添加
+     */
+    public function add()
+    {
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                if ($this->dataLimit && $this->dataLimitFieldAutoFill) {
+                    $params[$this->dataLimitField] = $this->auth->id;
+                }
+                try {
+                    //是否采用模型验证
+                    if ($this->modelValidate) {
+                        $name = str_replace("\\model\\", "\\validate\\", get_class($this->model));
+                        $validate = is_bool($this->modelValidate) ? ($this->modelSceneValidate ? $name . '.add' : $name) : $this->modelValidate;
+                        $this->model->validate($validate);
+                    }
+                    $result = $this->model->allowField(true)->save($params);
+                    if ($result !== false) {
+                        $this->success();
+                    } else {
+                        $this->error($this->model->getError());
+                    }
+                } catch (\think\exception\PDOException $e) {
+                    $this->error($e->getMessage());
+                } catch (\think\Exception $e) {
+                    $this->error($e->getMessage());
+                }
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        return $this->view->fetch();
+    }
+
+    /**
+     * 编辑
+     */
+    public function edit($ids = NULL)
+    {
+        $row = $this->model->get($ids);
+        if (!$row)
+            $this->error(__('No Results were found'));
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            if (!in_array($row[$this->dataLimitField], $adminIds)) {
+                $this->error(__('You have no permission'));
+            }
+        }
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                try {
+                    //是否采用模型验证
+                    if ($this->modelValidate) {
+                        $name = str_replace("\\model\\", "\\validate\\", get_class($this->model));
+                        $validate = is_bool($this->modelValidate) ? ($this->modelSceneValidate ? $name . '.edit' : $name) : $this->modelValidate;
+                        $row->validate($validate);
+                    }
+                    $result = $row->allowField(true)->save($params);
+                    if ($result !== false) {
+                        $this->success();
+                    } else {
+                        $this->error($row->getError());
+                    }
+                } catch (\think\exception\PDOException $e) {
+                    $this->error($e->getMessage());
+                } catch (\think\Exception $e) {
+                    $this->error($e->getMessage());
+                }
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
+    /**
+     * 删除
+     */
+    public function del($ids = "")
+    {
+        if ($ids) {
+            $pk = $this->model->getPk();
+            $adminIds = $this->getDataLimitAdminIds();
+            if (is_array($adminIds)) {
+                $count = $this->model->where($this->dataLimitField, 'in', $adminIds);
+            }
+            $list = $this->model->where($pk, 'in', $ids)->select();
+            $count = 0;
+            foreach ($list as $k => $v) {
+                $count += $v->delete();
+            }
+            if ($count) {
+                $this->success();
+            } else {
+                $this->error(__('No rows were deleted'));
+            }
+        }
+        $this->error(__('Parameter %s can not be empty', 'ids'));
+    }
+
+    /**
+     * 真实删除
+     */
+    public function destroy($ids = "")
+    {
+        $pk = $this->model->getPk();
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            $count = $this->model->where($this->dataLimitField, 'in', $adminIds);
+        }
+        if ($ids) {
+            $this->model->where($pk, 'in', $ids);
+        }
+        $count = 0;
+        $list = $this->model->onlyTrashed()->select();
+        foreach ($list as $k => $v) {
+            $count += $v->delete(true);
+        }
+        if ($count) {
+            $this->success();
+        } else {
+            $this->error(__('No rows were deleted'));
+        }
+        $this->error(__('Parameter %s can not be empty', 'ids'));
+    }
+
+    /**
+     * 还原
+     */
+    public function restore($ids = "")
+    {
+        $pk = $this->model->getPk();
+        $adminIds = $this->getDataLimitAdminIds();
+        if (is_array($adminIds)) {
+            $this->model->where($this->dataLimitField, 'in', $adminIds);
+        }
+        if ($ids) {
+            $this->model->where($pk, 'in', $ids);
+        }
+        $count = 0;
+        $list = $this->model->onlyTrashed()->select();
+        foreach ($list as $index => $item) {
+            $count += $item->restore();
+        }
+        if ($count) {
+            $this->success();
+        }
+        $this->error(__('No rows were updated'));
+    }
+
 }

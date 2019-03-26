@@ -60,12 +60,11 @@ class Kehu extends Backend
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
 
-            $where1=[];
-            $where1['status'] = 1;
-
             $authXm = new AuthXm();
             $zzjgids = $authXm->getAllZzjgs();
-            $where = array('zzjg_id'=>['in',$zzjgids]);//只取当前用户所属的组织机构，及子组织机构的项目
+            $where1=[];
+            $where1['status'] = 1;
+            $where1['zzjg_id'] = ['in',$zzjgids];//只取当前用户所属的组织机构，及子组织机构的项目
 
             $total = $this->model
                     ->where($where)
