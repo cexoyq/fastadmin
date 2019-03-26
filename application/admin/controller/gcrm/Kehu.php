@@ -60,17 +60,22 @@ class Kehu extends Backend
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
 
+            $where1=[];
+            $where1['status'] = 1;
+
             $authXm = new AuthXm();
             $zzjgids = $authXm->getAllZzjgs();
             $where = array('zzjg_id'=>['in',$zzjgids]);//只取当前用户所属的组织机构，及子组织机构的项目
 
             $total = $this->model
                     ->where($where)
+                    ->where($where1)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
                     ->where($where)
+                    ->where($where1)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
@@ -85,5 +90,36 @@ class Kehu extends Backend
             return json($result);
         }
         return $this->view->fetch();
+    }
+
+
+    /**
+     * 删除
+     */
+    public function del($ids = "")
+    {
+        if ($ids) {
+            $pk = $this->model->getPk();
+            $adminIds = $this->getDataLimitAdminIds();
+            if (is_array($adminIds)) {
+                $count = $this->model->where($this->dataLimitField, 'in', $adminIds);
+            }
+            $list = $this->model->where($pk, 'in', $ids)->select();
+            $count = 0;
+            $unixtime= time();
+            foreach ($list as $k => $v) {
+                //$count += $v->delete();
+                $count += $v->save([
+                    'status'  => 0,
+                    'deletetime' => $unixtime
+                ]);
+            }
+            if ($count) {
+                $this->success();
+            } else {
+                $this->error(__('No rows were deleted'));
+            }
+        }
+        $this->error(__('Parameter %s can not be empty', 'ids'));
     }
 }

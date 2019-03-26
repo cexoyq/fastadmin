@@ -70,6 +70,10 @@ class Fygl extends Backend
                 if ($this->request->request('keyField')) {
                         return $this->selectpage();
                     }
+                //$where无法直接修改，如果需要修改$where中的条件，只能在查询中新增一个where，$where1['fylog.status'] = 1;
+                $where1=[];
+                $where1['fylog.status'] = 1;
+
                 list($where, $sort, $order, $offset, $limit) = $this->buildparams();
 
                 $authXm = new AuthXm();
@@ -79,12 +83,14 @@ class Fygl extends Backend
                 $total = $this->model
                     ->with(['fytype', 'xm'])
                     ->where($where)
+                    ->where($where1)
                     ->order($sort, $order)
                     ->count();
 
                 $list = $this->model
                     ->with(['fytype', 'xm'])
                     ->where($where)
+                    ->where($where1)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
@@ -102,5 +108,36 @@ class Fygl extends Backend
                 return json($result);
             }
         return $this->view->fetch();
+    }
+
+
+    /**
+     * 删除
+     */
+    public function del($ids = "")
+    {
+        if ($ids) {
+            $pk = $this->model->getPk();
+            $adminIds = $this->getDataLimitAdminIds();
+            if (is_array($adminIds)) {
+                $count = $this->model->where($this->dataLimitField, 'in', $adminIds);
+            }
+            $list = $this->model->where($pk, 'in', $ids)->select();
+            $count = 0;
+            $unixtime= time();
+            foreach ($list as $k => $v) {
+                //$count += $v->delete();
+                $count += $v->save([
+                    'status'  => 0,
+                    'deletetime' => $unixtime
+                ]);
+            }
+            if ($count) {
+                $this->success();
+            } else {
+                $this->error(__('No rows were deleted'));
+            }
+        }
+        $this->error(__('Parameter %s can not be empty', 'ids'));
     }
 }
