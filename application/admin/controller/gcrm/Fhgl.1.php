@@ -152,10 +152,10 @@ class Fhgl extends Backend
 
     public function add1()
     {
-            $params = $this->request->get();
-            isset($params["row"])?$row=$params["row"]:$row=[];
-            isset($params["mx"])?$mx=$params["mx"]:$mx=[];
+            $params = $this->request->post();
+            $row = $params["row"];
             //$params = $this->request->get("data");
+            $mx=$params["mx"];  //取第二级：$mx[0]，取第三级：$mx[0]["xm"]
             //return $this->success('成功！',"",$row,1);
             //保存单据
             $result = $this->model->allowField(true)->save($row);
@@ -176,40 +176,6 @@ class Fhgl extends Backend
                             //保存单据明细失败
                             $this->error($this->model->getError());
                         }
-                    } else {
-                        $this->error($this->model->getError());
-            }
-            return json($params);
-            return json_decode($params);
-    }
-
-    public function edit1()
-    {
-            $params = $this->request->get();
-            isset($params["row"])?$row=$params["row"]:$row=[];
-            isset($params["mx"])?$mx=$params["mx"]:$mx=[];
-            //$params = $this->request->get("data");
-            //return $this->success('成功！',"",$row,1);
-            //保存单据
-            $id = $row['id'];
-            $result = $this->model->allowField(true)->save($row,['id'=>$id]);
-                    if ($result !== false) {
-                        $data = [
-                            "djID"=>$id,
-                            "row"=>$row,
-                            "mx"=>$mx
-                        ];
-                        //开始保存单据明细
-                        $fhlogmx = new Fhlogmx();
-                        $ok = $fhlogmx->edit($mx,$id);
-                        if ($ok){
-                            //保存发货明细成功
-                            $this->success("成功！","",$data,2);
-                        }else{
-                            //保存单据明细失败
-                            $this->error($this->model->getError());
-                        }
-                        $this->success("成功！","",$data,2);
                     } else {
                         $this->error($this->model->getError());
             }

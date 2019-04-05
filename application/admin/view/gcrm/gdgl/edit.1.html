@@ -1,0 +1,142 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Pid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-pid" data-rule="required" class="form-control" name="row[pid]" type="number" value="{$row.pid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Xm_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-xm_id" data-rule="required" data-source="xm/index" class="form-control selectpage" name="row[xm_id]" type="text" value="{$row.xm_id}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Riqi')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-riqi" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[riqi]" type="text" value="{$row.riqi}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Yysj')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-yysj" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[yysj]" type="text" value="{$row.yysj}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Jjsj')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-jjsj" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[jjsj]" type="text" value="{$row.jjsj}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Dd')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-dd" data-rule="required" class="form-control" name="row[dd]" type="text" value="{$row.dd}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Gzxx')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-gzxx" data-rule="required" class="form-control" name="row[gzxx]" type="text" value="{$row.gzxx}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Gdlxid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-gdlxID" data-rule="required" class="form-control" name="row[gdlxID]" type="number" value="{$row.gdlxID}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Gdsb')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-gdsb" data-rule="required" class="form-control" name="row[gdsb]" type="text" value="{$row.gdsb}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Clfsid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-clfsID" data-rule="required" class="form-control" name="row[clfsID]" type="number" value="{$row.clfsID}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Clnr')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-clnr" data-rule="required" class="form-control" name="row[clnr]" type="text" value="{$row.clnr}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Clzt')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-clzt" data-rule="required" class="form-control" name="row[clzt]" type="number" value="{$row.clzt}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Jsrid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-jsrID" data-rule="required" class="form-control" name="row[jsrID]" type="number" value="{$row.jsrID}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Jdtypeid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-jdtypeID" class="form-control" name="row[jdtypeID]" type="number" value="{$row.jdtypeID}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Tag')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-tag" class="form-control" name="row[tag]" type="text" value="{$row.tag}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('List_order')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-list_order" class="form-control" name="row[list_order]" type="number" value="{$row.list_order}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Deletetime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-deletetime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[deletetime]" type="text" value="{$row.deletetime|datetime}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remark" class="form-control" name="row[remark]" type="text" value="{$row.remark}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('More')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-more" class="form-control " rows="5" name="row[more]" cols="50">{$row.more}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-description" class="form-control" name="row[description]" type="text" value="{$row.description}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Deleted')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-deleted" data-rule="required" class="form-control" name="row[deleted]" type="number" value="{$row.deleted}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-status" data-rule="required" class="form-control" name="row[status]" type="number" value="{$row.status}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
