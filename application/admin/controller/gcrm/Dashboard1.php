@@ -5,6 +5,9 @@ namespace app\admin\controller\gcrm;
 use app\common\controller\Backend;
 use think\Config;
 use app\admin\model\gcrm\AuthXm;
+use app\admin\model\gcrm\Sys;
+use app\admin\model\gcrm\Gd;
+
 use think\Db;
 
 /**
@@ -63,7 +66,11 @@ class Dashboard1 extends Backend
         $axm = new AuthXm;                          //这样用需要在开头 use app\admin\model\gcrm\AuthXm;
         echo "getZzjg()";
         var_dump($axm->getZzjg());
-        echo "<br>";echo "getAllZzjgs()";
+        echo "<br>";
+        echo "getZzjgID()";
+        var_dump($axm->getZzjgID());
+        echo "<br>";
+        echo "getAllZzjgs()";
         var_dump($axm->getAllZzjgs());
         echo "<br>";
 
@@ -77,6 +84,23 @@ class Dashboard1 extends Backend
 
         echo "getkehuList()";
         var_dump($axm->getKehuList());
+        echo "<br>";
+
+        echo "getClztTreeList()";
+        $sys = new Sys;
+        $clztData = $sys->getClztTreeList();
+        var_dump($clztData);
+        echo "<br>";
+
+        echo "getGdlxTreeList()";
+        $gdlxData=$sys->getGdlxTreeList();
+        var_dump($gdlxData);
+        echo "<br>";
+
+        echo "getGdTreeList()";
+        $gd = new Gd;
+        $gdData = $gd->getGdTreeList();
+        var_dump($gdData);
         echo "<br>";
 
         return $this->view->fetch();

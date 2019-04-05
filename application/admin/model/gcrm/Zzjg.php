@@ -58,16 +58,6 @@ class Zzjg extends Model
         return $value && !is_numeric($value) ? strtotime($value) : $value;
     }
 
-    /***
-     * 取得当前用户的组织机构id号
-     */
-    public function getZzjgId()
-    {
-        $authXm = new AuthXm();
-        $zzjg = $authXm->getZzjg();   //取得当前用户所属的组织机构
-        return $zzjg;
-    }
-
     /**
      * return 用于在前台页面生成树形选择{:build_select('row[xm_id]', $xmdata, null, ['class'=>'form-control selectpicker', 'data-rule'=>'required'])}
      * 用法：$xmModel = new \app\admin\model\gcrm\Xm;  $xmdata = $xmModel->getXmTreeList();  $this->view->assign('xmdata', $xmdata);

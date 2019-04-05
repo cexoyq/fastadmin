@@ -30,9 +30,11 @@ class Kehu extends Backend
 
         $zzjgModel = new \app\admin\model\gcrm\Zzjg;
         $zzjgdata=$zzjgModel->getZzjgTreeList();
-        $zzjgId = $zzjgModel->getZzjgId();
-        $this->view->assign('zzjgid',$zzjgId);
         $this->view->assign('zzjgdata',$zzjgdata);
+
+        $authxm = new AuthXm();
+        $zzjgID = $authxm->getZzjgID();
+        $this->view->assign('zzjgid',$zzjgID);
     }
     
     /**

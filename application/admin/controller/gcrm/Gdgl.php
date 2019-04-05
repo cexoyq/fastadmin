@@ -5,6 +5,7 @@ namespace app\admin\controller\gcrm;
 use app\common\controller\Backend;
 
 use app\admin\model\gcrm\AuthXm;
+use app\admin\model\gcrm\Sys;
 use fast\Tree;
 
 /**
@@ -20,19 +21,34 @@ class Gdgl extends Backend
      * @var \app\admin\model\gcrm\Gd
      */
     protected $model = null;
+    //用户的组织机构ID号
+    private $zzjgID = null;
 
     public function _initialize()
     {
         parent::_initialize();
         $this->model = new \app\admin\model\gcrm\Gd;
 
+        $gdData = $this->model->getGdTreeList();
+        $this->view->assign('gddata', $gdData);
+
         $xmModel = new \app\admin\model\gcrm\Xm;
         $xmdata= $xmModel->getXmTreeList();
         $this->view->assign('xmdata', $xmdata);
 
-        $zzjgModel = new \app\admin\model\gcrm\Zzjg;
-        $zzjgId = $zzjgModel->getZzjgId();
-        $this->view->assign('zzjgid',$zzjgId);
+        $authxm = new AuthXm();
+        $this->zzjgID = $authxm->getZzjgID();
+        //$this->view->assign('zzjgid',$zzjgID);
+
+        $sys = new Sys;
+        $clztData = $sys->getClztTreeList();
+        $this->view->assign('clztdata',$clztData);
+        $gdlxData = $sys->getGdlxTreeList();
+        $this->view->assign('gdlxdata',$gdlxData);
+
+        $adminModel = new \app\admin\model\gcrm\Admin;
+        $gcsuserdata = $adminModel->getAdminGCSTreeList();
+        $this->view->assign('gcsuserdata',$gcsuserdata);
 
     }
     
@@ -69,14 +85,14 @@ class Gdgl extends Backend
             $where1['gd.zzjg_id']=['in',$zzjgids];//只取当前用户所属的组织机构，及子组织机构的项目
 
             $total = $this->model
-                    ->with(['gdmx'])
+                    ->with(['clzt','gdlx'])
                     ->where($where)
                     ->where($where1)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
-                    ->with(['gdmx'])
+                    ->with(['clzt','gdlx'])
                     ->where($where)
                     ->where($where1)
                     ->order($sort, $order)
@@ -84,9 +100,13 @@ class Gdgl extends Backend
                     ->select();
 
             foreach ($list as $row) {
-                $row->visible(['riqi','gddd','gzxx']);
-                $row->visible(['gdmx']);
-				$row->getRelation('gdmx')->visible(['gzxx','sbdd','sb','clzt']);
+                $row->visible(['id','bh','riqi','gddd','gzxx','gdlx_id','clzt_id']);
+                $row->visible(['clzt']);
+                $row->getRelation('clzt')->visible(['name']);
+                $row->visible(['gdlx']);
+				$row->getRelation('gdlx')->visible(['name']);
+                //$row->visible(['gdmx']);
+				//$row->getRelation('gdmx')->visible(['gzxx','sbdd','sb','clzt']);
             }
             $list = collection($list)->toArray();
             $result = array("total" => $total, "rows" => $list);
@@ -103,6 +123,7 @@ class Gdgl extends Backend
     {
         if ($this->request->isPost()) {
             $params = $this->request->post("row/a");
+            $params['zzjg_id'] = $this->zzjgID;         //手动设置用户的 组织机构ID号
             if ($params) {
                 if ($this->dataLimit && $this->dataLimitFieldAutoFill) {
                     $params[$this->dataLimitField] = $this->auth->id;
@@ -186,8 +207,13 @@ class Gdgl extends Backend
             }
             $list = $this->model->where($pk, 'in', $ids)->select();
             $count = 0;
+            $unixtime= time();
             foreach ($list as $k => $v) {
-                $count += $v->delete();
+                //$count += $v->delete();
+                $count += $v->save([
+                    'status'  => 0,
+                    'deletetime' => $unixtime
+                ]);
             }
             if ($count) {
                 $this->success();

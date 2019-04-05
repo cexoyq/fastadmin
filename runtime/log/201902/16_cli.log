@@ -1,4 +1,0 @@
-[ 2019-02-16T16:13:35+08:00 ][ sql ] [ DB ] CONNECT:[ UseTime:0.000616s ] mysql:host=localhost;dbname=fastadmin;charset=utf8
-[ 2019-02-16T16:13:35+08:00 ][ sql ] [ SQL ] SELECT 1 [ RunTime:0.000177s ]
-[ 2019-02-16T16:13:35+08:00 ][ sql ] [ SQL ] SHOW COLUMNS FROM `fa_auth_rule` [ RunTime:0.000896s ]
-[ 2019-02-16T16:13:35+08:00 ][ sql ] [ SQL ] SELECT * FROM `fa_auth_rule` WHERE  `name` = 'gcrm' LIMIT 1 [ RunTime:0.000394s ]

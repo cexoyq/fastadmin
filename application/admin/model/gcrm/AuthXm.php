@@ -77,6 +77,31 @@ class AuthXm extends Model
     }
 
     /***
+     * 根据用户id获取用户的组织机构，返回值为数组
+     * @param $uid int 用户id
+     * @return arrar 用户所属的组织机构 arrar() array(1) { [0]=> array(5) { ["uid"]=> int(1) ["zzjg_id"]=> int(22) ["id"]=> int(22) ["pid"]=> int(2) ["name"]=> string(15) "西安分公司" } }
+     */
+    public function getZzjgID($uid = null)
+    {
+        $auth = Auth::instance();
+        $this->id = $auth->id;
+        $_uid = is_null($uid) ? $this->id : $uid;
+        $zzjg = [];
+        // 执行查询
+        $user_zzjg = Db::name($this->config['gcrm_zzjg'])
+            ->alias('a')
+            ->join('__' . strtoupper($this->config['gcrm_zzjg_user']) . '__ ag', 'a.id = ag.zzjg_id', 'LEFT')
+            ->field('a.id')
+            ->where("ag.uid='{$_uid}'")
+            ->find();
+        //$zzjg[$uid] = $user_zzjg ?: [];
+        if (null === $user_zzjg){
+            return null;
+        }
+        return $user_zzjg['id'];    //return:3
+    }
+
+    /***
      * 根据用户id获取用户的组织机构及下级组织机构，返回值为数组
      * @param $uid int 用户id
      * @return arrar 用户所属的组织机构及下级组织机构 arrar()： array(1) { [0]=> array(1) { ["zzjgs"]=> string(10) "-1,1,2,3,22" } }
@@ -150,7 +175,7 @@ class AuthXm extends Model
         //Tree类的用法 ，输出多级选择，只能选择自己的组织机构及子组织机构以下的项目
         $List = Db::name($this->config['gd'])
             ->field(['id', 'pid', 'gddd'])
-            ->whereNotIn('clzt',1)      //只读取没有结束的工单，1表示已结束的工单，
+            ->whereNotIn('clzt_id',7)      //只读取没有结束的工单，1表示已结束的工单，
             ->whereIn('zzjg_id', $zzjgIds)
             ->order('weigh', 'desc')
             ->select();

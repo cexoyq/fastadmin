@@ -46,6 +46,16 @@ class Gd extends Model
     {
         return $this->belongsTo('Gdmx', 'id', 'gd_id', [], 'LEFT')->setEagerlyType(0);
     }
+
+    public function clzt()
+    {
+        return $this->belongsTo('Sys', 'clzt_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+    public function gdlx()
+    {
+        return $this->belongsTo('Sys', 'gdlx_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
     
     /**
      * return 用于在前台页面生成树形选择{:build_select('row[xm_id]', $xmdata, null, ['class'=>'form-control selectpicker', 'data-rule'=>'required'])}
@@ -63,7 +73,7 @@ class Gd extends Model
 
         $arrdata = [0 => __('None')];
         foreach ($list as $k => &$v) {
-            $arrdata[$v['id']] = $v['name'];
+            $arrdata[$v['id']] = $v['gddd'];
         }
         return $arrdata;
     }

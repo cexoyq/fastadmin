@@ -1,127 +1,74 @@
+<style>
+        .infoColor{
+            background-color: #31b0d5  !important;
+            color: white;
+        }
+</style>
 <form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
 
-    <div class="form-group">
+    <!--div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Parentid')}:</label>
         <div class="col-xs-12 col-sm-8">
             <input id="c-parentId" class="form-control" name="row[parentId]" type="number" value="0">
         </div>
-    </div>
+    </div-->
+
     <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-2">{:__('Remark')}:</label>
-            <div class="col-xs-12 col-sm-8">
-                <input id="c-remark" class="form-control" name="row[remark]" type="text">
-            </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Riqi')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-riqi" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[riqi]" type="text" value="{:date('Y-m-d')}">
+        <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Riqi')}:</label>
+        <div class="col-xs-12 col-sm-2">
+                {:__('Riqi')}:
+            <input id="c-riqi" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD"
+                data-use-current="true" name="row[riqi]" type="text" value="{:date('Y-m-d')}">
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Zzjg_id')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            {:build_select('row[zzjg_id]', $zzjgdata, $zzjgid, ['class'=>'form-control selectpicker', 'data-rule'=>'required'])}
+        <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Zzjg_id')}:</label>
+        <div class="col-xs-12 col-sm-2">
+                {:__('Zzjg_id')}:
+            {:build_select('row[zzjg_id]', $zzjgdata, $zzjgid, ['class'=>'form-control selectpicker',
+            'data-rule'=>'required',])}
             <!--input id="c-zzjg_id" data-rule="required" data-source="zzjg/index" class="form-control selectpage" name="row[zzjg_id]" type="text" value=""-->
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Gd_id')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            {:build_select('row[gd_id]', $gddata, null, ['class'=>'form-control selectpicker', 'data-rule'=>'required'])}
-            <!--input id="c-gd_id" data-rule="required" data-source="gd/index" class="form-control selectpage" name="row[gd_id]" type="text" value=""-->
+        <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Jsr')}:</label>
+        <div class="col-xs-12 col-sm-2">
+                {:__('Jsr')}:
+            <input id="c-jsr" data-rule="required" class="form-control" name="row[jsr]" placeholder="{:__('Jsr')}:"
+                type="text">
+        </div>
+
+        <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Kdgs')}:</label>
+        <div class="col-xs-12 col-sm-2">
+                {:__('Kdgs')}:
+            <input id="c-kdgs" class="form-control" name="row[kdgs]" placeholder="{:__('Kdgs')}:" type="text">
+        </div>
+        <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Kddh')}:</label>
+        <div class="col-xs-12 col-sm-3">
+                {:__('Kddh')}:
+            <input id="c-kddh" data-rule="required" class="form-control" name="row[kddh]" placeholder="{:__('Kddh')}:"
+                type="text">
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Xm')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-xm" class="form-control" name="row[xm]" type="text">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Xh')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-xh" data-rule="required" class="form-control" name="row[xh]" type="text">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Sn')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-sn" class="form-control" name="row[sn]" type="text">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Sl')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-sl" data-rule="required" class="form-control" name="row[sl]" type="number">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Gzsm')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-gzsm" class="form-control" name="row[gzsm]" type="text" value="0">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Jydh')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-jydh" class="form-control" name="row[jydh]" type="text" value="0">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Jyr')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-jyr" class="form-control" name="row[jyr]" type="text" value="0">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Jsr')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-jsr" data-rule="required" class="form-control" name="row[jsr]" type="text">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Kdgs')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-kdgs" class="form-control" name="row[kdgs]" type="text">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Kddh')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-kddh" data-rule="required" class="form-control" name="row[kddh]" type="text">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Mdgs')}:</label>
-        <div class="col-xs-12 col-sm-8">
+        <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Mdgs')}:</label>
+        <div class="col-xs-12 col-sm-3">
+                {:__('Mdgs')}:
             <input id="c-mdgs" data-rule="required" class="form-control" name="row[mdgs]" type="text">
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Fhdz')}:</label>
-        <div class="col-xs-12 col-sm-8">
+        <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Fhdz')}:</label>
+        <div class="col-xs-12 col-sm-3">
+                {:__('Fhdz')}:
             <input id="c-fhdz" class="form-control" name="row[fhdz]" type="text">
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Shr')}:</label>
-        <div class="col-xs-12 col-sm-8">
+        <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Shr')}:</label>
+        <div class="col-xs-12 col-sm-3">
+                {:__('Shr')}:
             <input id="c-shr" class="form-control" name="row[shr]" type="text">
         </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Shrdh')}:</label>
-        <div class="col-xs-12 col-sm-8">
+        <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Shrdh')}:</label>
+        <div class="col-xs-12 col-sm-3">
+                {:__('Shrdh')}:
             <input id="c-shrdh" class="form-control" name="row[shrdh]" type="text">
         </div>
     </div>
+
     <!--div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Weigh')}:</label>
         <div class="col-xs-12 col-sm-8">
@@ -146,11 +93,117 @@
             <input id="c-deletetime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[deletetime]" type="text" value="{:date('Y-m-d H:i:s')}">
         </div>
     </div-->
-    <div class="form-group layer-footer">
-        <label class="control-label col-xs-12 col-sm-2"></label>
-        <div class="col-xs-12 col-sm-8">
+
+    <table id="table" data-single-select="true"
+        class="table table-condensed table-striped table-bordered table-hover table-nowrap" width="100%">
+    </table>
+    <hr />
+    <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-8"></label>
+            <div class="col-xs-12 col-sm-2">
+            <button type="button" class="btn btn-info btn-embossed btn-execute">{:__('OK')}</button>
+            <button type="reset" class="btn btn-success btn-embossed">{:__('Reset')}</button>
+            </div>
+    </div>
+    <!--div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-8"></label>
+        <div class="col-xs-12 col-sm-2">
             <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
             <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
         </div>
-    </div>
+    </div-->
+</form>
+
+<form class="form-horizontal well well-lg" role="form1" data-toggle="validator">
+    
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Gd_id')}:</label>
+            <div class="col-xs-12 col-sm-3">
+                {:__('Gd_id')}:
+                {:build_select('row[gd_id]', $gddata, null, ['class'=>'form-control selectpicker','id'=>'c-gd_id',
+                'data-rule'=>'required'])}
+                <!--input id="c-gd_id" data-rule="required" data-source="gd/index" class="form-control selectpage" name="row[gd_id]" type="text" value=""-->
+            </div>
+            <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Xm')}:</label>
+            <div class="col-xs-12 col-sm-3">
+                {:__('Xm')}:
+                <input id="c-xm" class="form-control" name="row[xm]" type="text">
+            </div>
+            <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Fwlx_id')}:</label>
+            <div class="col-xs-12 col-sm-3">
+                {:__('Fwlx_id')}:
+                {:build_select('row[fwxl_id]', $fwlxdata, null, ['class'=>'form-control selectpicker','id'=>'c-fwlx_id',
+                'data-rule'=>'required'])}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Name')}:</label>
+            <div class="col-xs-12 col-sm-3">
+                {:__('Name')}:
+                <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text">
+            </div>
+            <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Xh')}:</label>
+            <div class="col-xs-12 col-sm-3">
+                {:__('Xh')}:
+                <input id="c-xh" data-rule="required" class="form-control" name="row[xh]" type="text">
+            </div>
+            <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Sn')}:</label>
+            <div class="col-xs-12 col-sm-3">
+                {:__('Sn')}:
+                <input id="c-sn" class="form-control" name="row[sn]" type="text">
+            </div>
+            <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Sl')}:</label>
+            <div class="input-group col-xs-12 col-sm-3">
+                {:__('Sl')}:
+                <input id="c-sl" data-rule="required" class="form-control" name="row[sl]" type="number">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2" data-toggle="tooltip"
+                title="选择发货地类型">{:__('Fhlx_id')}:</label>
+            <div class="col-xs-12 col-sm-2">
+                {:build_select('row[fhlx_id]', $fhlxdata, null, ['id'=>'c-fhlx_id','class'=>'form-control
+                selectpicker','data-rule'=>'required'])}
+                <!--input id="c-fhlx_id" class="form-control" name="row[fhlx_id]" type="text"-->
+            </div>
+            <div class="hide" id="relation-zone">
+                <label class="control-label col-xs-12 col-sm-2">{:__('Jyxx')}:</label>
+                <div class="col-xs-12 col-sm-2">
+                    <input id="c-jyr" class="form-control" name="row[jyr]" type="text" placeholder="{:__('Jyr')}:"
+                        value="">
+                </div>
+                <div class="col-xs-12 col-sm-2">
+                    <input id="c-jydh" class="form-control" name="row[jydh]" type="text" placeholder="{:__('Jydh')}:"
+                        value="">
+                </div>
+            </div>
+            <div class="hide" id="wxf-zone">
+                <label class="control-label col-xs-12 col-sm-2">{:__('Wxf')}:</label>
+                <div class="col-xs-12 col-sm-3">
+                    <input id="c-wxf" class="form-control" name="row[wxf]" type="number" value="0">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">{:__('Gzsm')}:</label>
+            <div class="col-xs-12 col-sm-8">
+                <textarea id="c-gzsm" data-rule="required" name="row[gzsm]" class="form-control" rows="3"></textarea>
+                <!--input id="c-gzsm" class="form-control" name="row[gzsm]" type="text" value="0"-->
+            </div>
+        </div>
+        <hr>
+        <div class="form-group text-right">
+            <label class="control-label col-xs-12 col-sm-6"></label>
+            <div class="col-xs-12 col-sm-4">
+                <div id="toolbar" class="btn-group">
+                    <button id="btn_add_mx" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增明细
+                    </button>
+                    <button id="btn_edit_mx" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>修改选中行明细
+                    </button>
+                </div>
+            </div>
+        </div>
+
 </form>

@@ -25,10 +25,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('id')},
+                        {field: 'bh', title: __('Bh')},
                         {field: 'riqi', title: __('Riqi'), operate:'RANGE', addclass:'datetimerange'},
                         {field: 'gddd', title: __('Gddd')},
                         {field: 'gzxx', title: __('Gzxx')},
-                        {field: 'clzt', title: __('Clzt')},
+                        {field: 'clzt.name', title: __('Clzt')},
+                        {field: 'gdlx.name', title: __('Gdlx')},
                         //{field: 'gdmx.gzxx', title: __('Gdmx.gzxx')},
                         //{field: 'gdmx.sbdd', title: __('Gdmx.sbdd')},
                         //{field: 'gdmx.sb', title: __('Gdmx.sb')},

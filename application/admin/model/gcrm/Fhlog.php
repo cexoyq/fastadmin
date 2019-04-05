@@ -34,7 +34,7 @@ class Fhlog extends Model
     
     public function getStatusList()
     {
-        //return ['1' => __('Status 1'),'0' => __('Status 0')];
+        return ['1' => __('Status 1'),'0' => __('Status 0')];
     }     
 
 
@@ -61,5 +61,14 @@ class Fhlog extends Model
     public function zzjg()
     {
         return $this->belongsTo('Zzjg', 'zzjg_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+    public function gd()
+    {
+        return $this->belongsTo('gd', 'gd_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+    public function fhlx(){
+        return $this->belongsTo('sys', 'fhlx_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
 }

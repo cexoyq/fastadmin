@@ -47,17 +47,22 @@ class Xmgl extends Backend
 
         $zzjgModel = new \app\admin\model\gcrm\Zzjg;
         $zzjgdata=$zzjgModel->getZzjgTreeList();
-        $zzjgId = $zzjgModel->getZzjgId();
-        $this->view->assign('zzjgid',$zzjgId);
         $this->view->assign('zzjgdata',$zzjgdata);
+
+        $authxm = new AuthXm();
+        $zzjgID = $authxm->getZzjgID();
+        $this->view->assign('zzjgid',$zzjgID);
+
 
         $kehuModel = new \app\admin\model\gcrm\Kehu;
         $kehudata = $kehuModel->getKehuTreeList();
         $this->view->assign('kehudata',$kehudata);
 
         $adminModel = new \app\admin\model\gcrm\Admin;
-        $userdata = $adminModel->getAdminTreeList();
-        $this->view->assign('userdata',$userdata);
+        $gcsuserdata = $adminModel->getAdminGCSTreeList();
+        $this->view->assign('gcsuserdata',$gcsuserdata);
+        $xsuserdata = $adminModel->getAdminXSTreeList();
+        $this->view->assign('xsuserdata',$xsuserdata);
     }
     
     /**
