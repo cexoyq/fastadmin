@@ -18,12 +18,12 @@ t 忽略。
 #data/runtime/
 .vscode
 runtime/
-cache
-log
-temp
-vendor
-thinkphp
-#simplewind/
+cache/
+log/
+temp/
+vendor/
+think/
+simplewind/
 doc/
-# update
-
+update/
+uploads/
