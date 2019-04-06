@@ -28,31 +28,9 @@ class Fhgl extends Backend
         $this->model = new \app\admin\model\gcrm\Fhlog;
         $this->view->assign("statusList", $this->model->getStatusList());
 
-        $zzjgModel = new \app\admin\model\gcrm\Zzjg;
-        $zzjgdata=$zzjgModel->getZzjgTreeList();
-        $this->view->assign('zzjgdata',$zzjgdata);
-
         $authxm = new AuthXm();
         $zzjgID = $authxm->getZzjgID();
         $this->view->assign('zzjgid',$zzjgID);
-
-        $gdModel = new \app\admin\model\gcrm\Gd;
-        $gddata=$gdModel->getGdTreeList();
-        $this->view->assign('gddata',$gddata);
-
-        $sys = new Sys();
-        $fhlxData = $sys->getFhlxTreeList();
-        $this->view->assign('fhlxdata',$fhlxData);
-
-        $fwlxData = $sys->getFwlxTreeList();
-        $this->view->assign('fwlxdata',$fwlxData);
-
-        $adminModel = new \app\admin\model\gcrm\Admin;
-        $gcsuserdata = $adminModel->getAdminGCSTreeList();
-        $this->view->assign('gcsuserdata',$gcsuserdata);
-        $userdata = $adminModel->getZzjgTreeList();
-        $this->view->assign('userdata',$userdata);
-
     }
     
     /**

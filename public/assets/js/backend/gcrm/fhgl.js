@@ -148,6 +148,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 $("#c-jyr_id").val(row.jyr_id);
                 //$("#c-jyr_id").find("option[value='" + row.jyr_id + "']").attr("selected",true);
                 $("#c-jydh").val(row.jydh);
+                $("#c-gd_id").selectPageRefresh(); //刷新selectpage的值
+                $("#c-fhlx_id").selectPageRefresh(); //刷新selectpage的值
+                $("#c-fwlx_id").selectPageRefresh(); //刷新selectpage的值
+                $("#c-glr_id").selectPageRefresh(); //刷新selectpage的值
+                $("#c-jyr_id").selectPageRefresh(); //刷新selectpage的值
+                $(".selectpage").selectPageRefresh(); //刷新selectpage的值
             });
             //新增明细
             $(document).on('click', "#btn_add_mx", function () {
@@ -406,6 +412,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 $("#c-jyr_id").val(row.jyr_id);
                 //$("#c-jyr_id").find("option[value='" + row.jyr_id + "']").attr("selected",true);
                 $("#c-jydh").val(row.jydh);
+                $("#c-gd_id").selectPageRefresh(); //刷新selectpage的值
+                $("#c-fhlx_id").selectPageRefresh(); //刷新selectpage的值
+                $("#c-fwlx_id").selectPageRefresh(); //刷新selectpage的值
+                $("#c-glr_id").selectPageRefresh(); //刷新selectpage的值
+                $("#c-jyr_id").selectPageRefresh(); //刷新selectpage的值
+                $(".selectpage").selectPageRefresh(); //刷新selectpage的值
             });
             //新增明细
             $(document).on('click', "#btn_add_mx", function () {

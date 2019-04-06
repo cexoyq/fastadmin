@@ -23,15 +23,15 @@
             <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Zzjg_id')}:</label>
             <div class="col-xs-12 col-sm-2">
                 {:__('Zzjg_id')}:
-                {:build_select('zzjg_id', $zzjgdata, $zzjgid,['class'=>'form-control selectpicker','id'=>'c-zzjg_id',
-                'data-rule'=>'required'])}
+                <input id="c-zzjg_id" name="zzjg_id" data-source="gcrm/zzjggl/selectpage" data-field="name" data-primary-key="id"
+                    value="{$zzjgid}" data-select-only="true" data-rule="required" class="form-control selectpage" type="text">
                 <!--input id="c-zzjg_id" data-rule="required" data-source="zzjg/index" class="form-control selectpage" name="zzjg_id" type="text" value=""-->
             </div>
             <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Jsr')}:</label>
             <div class="col-xs-12 col-sm-2">
                 {:__('Jsr')}:
-                {:build_select('jsr',$gcsuserdata, $row.jsr, ['class'=>'form-control selectpicker','id'=>'c-jsr',
-                'data-rule'=>'required'])}
+                <input id="c-jsr" name="jsr" data-source="gcrm/authxm/selectpageUser" data-field="nickname" data-primary-key="id"
+            value="{$row.jsr}" data-select-only="true" data-rule="required" class="form-control selectpage" type="text">
                 <!--input id="c-jsr" data-rule="required" class="form-control" name="jsr" placeholder="{:__('Jsr')}:"
                     type="text"-->
             </div>
@@ -45,7 +45,9 @@
             <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Kdgs')}:</label>
             <div class="col-xs-12 col-sm-2">
                 {:__('Kdgs')}:
-                <input id="c-kdgs" value="{$row.kdgs}" class="form-control" name="kdgs" placeholder="{:__('Kdgs')}:" type="text">
+                <input id="c-kdgs" name="kdgs" data-source="gcrm/sys/selectpagekdgs" data-field="name" data-primary-key="name"
+                    value="{$row.kdgs}" data-rule="required" class="form-control selectpage" type="text">
+                <!--input id="c-kdgs" value="{$row.kdgs}" class="form-control" name="kdgs" placeholder="{:__('Kdgs')}:" type="text"-->
             </div>
             <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Kddh')}:</label>
             <div class="col-xs-12 col-sm-2">
@@ -85,7 +87,7 @@
             <label for="c-imgurl" class="control-label col-xs-12 col-sm-2 sr-only">头像:</label>
             <div class="col-xs-12 col-sm-7">
                 <div class="input-group">
-                    <input id="c-imgurl" data-rule="" class="form-control" size="50" name="imgurl" type="text" value="">
+                    <input id="c-imgurl" data-rule="" class="form-control" size="50" name="imgurl" type="text" value="{$row.imgurl}">
                     <div class="input-group-addon no-border no-padding">
                         <span><button type="button" id="plupload-imgurl" class="btn btn-danger plupload"
                                 data-input-id="c-imgurl" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
@@ -117,24 +119,28 @@
             <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Gd_id')}:</label>
             <div class="col-xs-12 col-sm-3">
                 {:__('Gd_id')}:
-                {:Form::select('gd_id', $gddata, null, ['id'=>'c-gd_id'])}
+                <input id="c-gd_id" name="gd_id" data-source="gcrm/gdgl/selectpageGdNotOk" data-field="gddd" data-primary-key="id"
+                    value="" class="form-control selectpage" type="text" placeholder="没有则输入0">
                 <!--input id="c-gd_id" data-rule="required" data-source="gd/index" class="form-control selectpage" name="gd_id" type="text" value=""-->
             </div>
             <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Xm')}:</label>
             <div class="col-xs-12 col-sm-3">
                 {:__('Xm')}:
-                <input id="c-xm" class="form-control" name="xm" type="text">
+                <input id="c-xm" name="xm" data-source="gcrm/xmgl/selectpageZzjgXm" data-field="name" data-primary-key="name"
+                    value="" class="form-control selectpage" type="text">
+                <!--input id="c-xm" class="form-control" name="xm" type="text"-->
             </div>
             <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Fwlx_id')}:</label>
             <div class="col-xs-12 col-sm-3">
                 {:__('Fwlx_id')}:
-                {:Form::select('fwlx_id', $fwlxdata, null, ['id'=>'c-fwlx_id'])}
+                <input id="c-fwlx_id" name="fwlx_id" data-source="gcrm/sys/selectpageFwlx" data-field="name" data-primary-key="id"
+                    value="" data-select-only="true" data-rule="required" class="form-control selectpage" type="text">
             </div>
             <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Glr_id')}:</label>
             <div class="col-xs-12 col-sm-2">
                 {:__('Glr_id')}:
-                {:Form::select('glr_id',$userdata, null,
-                ['id'=>'c-glr_id','data-rule'=>'required','class'=>'form-control'])}
+                <input id="c-glr_id" name="glr_id" data-source="gcrm/authxm/selectpageUser" data-field="nickname" data-primary-key="id"
+                    value="" data-select-only="true" data-rule="required" class="form-control selectpage" type="text">
                 <!--input id="c-glr_id" data-rule="required" class="form-control" name="glr_id" placeholder="{:__('Glr_id')}:"
                     type="text"-->
             </div>
@@ -164,14 +170,15 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-2" data-toggle="tooltip" title="选择发货地类型">{:__('Fhlx_id')}:</label>
             <div class="col-xs-12 col-sm-2">
-                {:Form::select('fhlx_id', $fhlxdata, null,
-                ['id'=>'c-fhlx_id','data-rule'=>'required'])}
+                <input id="c-fhlx_id" name="fhlx_id" data-source="gcrm/sys/selectpageFhlx" data-field="name" data-primary-key="id"
+                    value="" data-select-only="true" data-rule="required" class="form-control selectpage" type="text">
                 <!--input id="c-fhlx_id" class="form-control" name="fhlx_id" type="text"-->
             </div>
             <div class="hide" id="relation-zone">
                 <label class="control-label col-xs-12 col-sm-2">{:__('Jyxx')}:</label>
                 <div class="col-xs-12 col-sm-2">
-                    {:Form::select('jyr_id', $userdata,null,['id'=>'c-jyr_id'])}
+                    <input id="c-jyr_id" name="jyr_id" data-source="gcrm/authxm/selectpageUser" data-field="nickname" data-primary-key="id"
+                        value="" data-select-only="true" data-rule="required" class="form-control selectpage" type="text">
                     <!--input id="c-jyr_id" class="form-control" name="jyr_id" type="text" placeholder="{:__('Jyr_id')}:" value=""-->
                 </div>
                 <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Jydh')}:</label>

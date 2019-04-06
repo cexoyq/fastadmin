@@ -147,18 +147,20 @@
         <div class="col-xs-12 col-sm-3">
             {:__('Gd_id')}:
             <input id="c-gd_id" name="gd_id" data-source="gcrm/gdgl/selectpageGdNotOk" data-field="gddd" data-primary-key="id"
-                value="" data-rule="required" class="form-control selectpage" type="text">
+                value="" class="form-control selectpage" type="text">
             <!--input id="c-gd_id" data-rule="required" data-source="gd/index" class="form-control selectpage" name="gd_id" type="text" value=""-->
         </div>
         <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Xm')}:</label>
         <div class="col-xs-12 col-sm-3">
             {:__('Xm')}:
-            <input id="c-xm" class="form-control" name="xm" type="text">
+            <input id="c-xm" name="xm" data-source="gcrm/xmgl/selectpageZzjgXm" data-field="name" data-primary-key="name"
+                value="" class="form-control selectpage" type="text">
+            <!--input id="c-xm" class="form-control" name="xm" type="text"-->
         </div>
         <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Fwlx_id')}:</label>
         <div class="col-xs-12 col-sm-3">
             {:__('Fwlx_id')}:
-            <input id="c-fwlx_id" name="fwlx_id" data-source="gcrm/sys/selectpageFwlx" data-field="name" data-primary-key="id"
+            <input id="c-fwlx_id" name="fwlx_id" data-source="gcrm/sys/selectpageFwlx" data-field="name" data-primary-key="name"
                 value="" data-rule="required" class="form-control selectpage" type="text">
         </div>
         <label class="control-label col-xs-12 col-sm-2 sr-only">{:__('Glr_id')}:</label>
