@@ -81,6 +81,9 @@ class Dashboard1 extends Backend
         echo "getAdminsList()";
         var_dump($axm->getAdminList());
         echo "<br>";
+        echo "getAdminIds()";
+        var_dump($axm->getAdminIds());
+        echo "<br>";
 
         echo "getkehuList()";
         var_dump($axm->getKehuList());

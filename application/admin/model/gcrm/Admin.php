@@ -29,7 +29,7 @@ class Admin extends Model
         //$list = Tree::instance()->getTreeList(Tree::instance()->getTreeArray(0), 'nickname');    //getTreeArray只有取父级的ID号才能将本级组织机构填充到树形数组
         $arrdata = [0 => __('None')];
         foreach ($List as $k => &$v) {
-            $arrdata[$v['id']] = $v['nickname'];
+            $arrdata[$v['id']] = $v['name'];
         }
         //var_dump($arrdata);
         return $arrdata;
@@ -79,7 +79,7 @@ class Admin extends Model
         //$list = Tree::instance()->getTreeList(Tree::instance()->getTreeArray(0), 'nickname');    //getTreeArray只有取父级的ID号才能将本级组织机构填充到树形数组
         $arrdata = [0 => __('None')];
         foreach ($List as $k => &$v) {
-            $arrdata[$v['id']] = $v['nickname'];
+            $arrdata[$v['id']] = $v['name'];
         }
         //var_dump($arrdata);
         return $arrdata;

@@ -77,7 +77,7 @@ class AuthXm extends Model
     }
 
     /***
-     * 根据用户id获取用户的组织机构，返回值为数组
+     * 根据用户id获取用户的组织机构，返回值为integer
      * @param $uid int 用户id
      * @return arrar 用户所属的组织机构 arrar() array(1) { [0]=> array(5) { ["uid"]=> int(1) ["zzjg_id"]=> int(22) ["id"]=> int(22) ["pid"]=> int(2) ["name"]=> string(15) "西安分公司" } }
      */
@@ -115,7 +115,7 @@ class AuthXm extends Model
         // 执行查询
         $user_zzjg = Db::query("select getChildzzjg('{$_uid}') as zzjgs");
         $zzjgs[$uid] = $user_zzjg ?: [];    //$zzjgs[$uid][0]['zzjgs'];
-        return $zzjgs[$uid][0]['zzjgs'];
+        return $zzjgs[$uid][0]['zzjgs'];    //return: -1,1,2,3,22
     }
 
     /***
@@ -135,7 +135,7 @@ class AuthXm extends Model
 
     /***
      * 根据当前用户id，得到用户组织机构，然后根据组织机构，取得当前用户所属组织机构及子组织机构下的所有用户
-     *
+     * 返回数组 array(3) { [0]=> array(4) { ["id"]=> int(8) ["username"]=> string(7) "xiongyi" ["name"]=> string(6) "熊义" ["zzjg_id"]=> int(3) } [1]=> array(4) { ["id"]=> int(3) ["username"]=> string(8) "xiongyue" ["name"]=> string(6) "熊岳" ["zzjg_id"]=> int(3) } [2]=> array(4) { ["id"]=> int(2) ["username"]=> string(3) "gxy" ["name"]=> string(9) "龚幸亚" ["zzjg_id"]=> int(3) } } 
      */
     public function getAdminList($uid = null)
     {
@@ -144,10 +144,27 @@ class AuthXm extends Model
         $a = Db::name($this->config['admin'])
             ->alias('a')
             ->join('__' . strtoupper($this->config['gcrm_zzjg_user']) . '__ ag', 'a.id = ag.uid', 'LEFT')
-            ->field('a.id,a.username,a.nickname,ag.zzjg_id')
+            ->field(['a.id'=>'id','a.username','a.nickname'=>'name','ag.zzjg_id'])
             ->whereIn('ag.zzjg_id', $zzjgs)
             ->order('id', 'desc')
             ->select();
+        return $a;
+    }
+    /***
+     * 根据当前用户id，得到用户组织机构，然后根据组织机构，取得当前用户所属组织机构及子组织机构下的所有用户的id
+     * 返回数组 array(5) { [0]=> int(10) [1]=> int(8) [2]=> int(3) [3]=> int(2) [4]=> int(1) }
+     */
+    public function getAdminIds($uid = null)
+    {
+        $zzjgs = $this->getAllZzjgs();
+        // 执行查询
+        $a = Db::name($this->config['admin'])
+            ->alias('a')
+            ->join('__' . strtoupper($this->config['gcrm_zzjg_user']) . '__ ag', 'a.id = ag.uid', 'LEFT')
+            //->field(['a.id'=>'id','a.username','a.nickname'=>'name','ag.zzjg_id'])
+            ->whereIn('ag.zzjg_id', $zzjgs)
+            ->order('id', 'desc')
+            ->column('a.id');
         return $a;
     }
 

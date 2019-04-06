@@ -98,6 +98,20 @@ class Sys extends Model
         return $datas;
     }
 
+    /***
+     *  取得快递公司列表
+     */
+    public function getKdgsArr()
+    {
+        //Tree类的用法 ，输出费用类型多级选择
+        $where['pid'] = 25;
+        $result = $this->field(['id', 'pid', 'name'])
+            ->where($where)
+            ->order('weigh', 'asc')
+            ->select();
+        return $result;
+    }
+
 
 
 }
